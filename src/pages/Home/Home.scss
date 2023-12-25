@@ -148,6 +148,11 @@
                     font-family: 'Victormono';
                     font-weight: bold;
                 }
+
+                span {
+                    opacity: .9;
+                    color: $Color-2;
+                }
             }
 
             .col2 {
@@ -178,6 +183,8 @@
                     }
 
                     &:first-child {
+                        margin-left: 0;
+
                         &::after {
                             content: "BEST SELLING";
                             font-size: $fontSize-Extra_Light;
@@ -201,6 +208,16 @@
                         }
                     }
 
+                }
+
+                @media screen and (max-width: $breakpointSmall) {
+                    nav {
+                        width: 100%;
+
+                        a {
+                            width: calc((100% - 4px) / 3);
+                        }
+                    }
                 }
             }
 
@@ -367,6 +384,35 @@
 
             .carousel-card.active {
                 display: block;
+            }
+        }
+    }
+}
+
+.author-carousel {
+    .container {
+        .row {
+            padding-top: 68px;
+            padding-bottom: 16px;
+
+            .col:nth-child(1) {
+                p {
+                    font-size: 24px;
+                    font-weight: bold;
+                    font-family: 'Victormono';
+                }
+
+                span {
+                    color: $Color-2;
+                    opacity: .9;
+                }
+            }
+
+            .col:nth-child(2) {
+                span {
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
             }
         }
     }
