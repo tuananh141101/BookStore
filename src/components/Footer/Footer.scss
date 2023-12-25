@@ -1,0 +1,156 @@
+@import '../../assets/styles/common.scss';
+
+.footer {
+
+    .footer-top {
+        margin: 42px 0;
+
+        div {
+            p {
+                font-size: $fontSize-X_Large;
+                color: $Color-2;
+            }
+
+            span {
+                color: $Color-4;
+            }
+        }
+
+        .subcribe-form {
+            width: 100%;
+
+            form {
+                width: 100%;
+
+                input {
+                    width: 50%;
+                    margin-right: 14px;
+                    border: 0;
+                    outline: 0;
+                    background: $backGround-input;
+                    padding: 16px 24px;
+                    border-radius: 2px;
+                    border: 1px solid $Color-1;
+
+                    &:focus {
+                        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+                    }
+                }
+
+                button {
+                    border: 0;
+                    outline: 0;
+                    padding: 16px 44px;
+                    border-radius: 2px;
+                    transition: all 0.1s ease-in-out;
+                    border: 1px solid $Color-1;
+
+                    background-color: white;
+                    border: 1px solid $Color-1;
+                    color: $Color-1;
+
+                    &:hover {
+                        background-color: $Color-1;
+                        color: white;
+                    }
+                }
+
+                @media screen and (max-width: "992px") {
+                    flex-direction: column;
+
+                    input {
+                        width: 100%;
+                        margin-right: 0;
+                        margin-bottom: 12px;
+                    }
+
+                    button {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+
+    .footer-center {
+        .row:first-child {
+            margin-bottom: 42px;
+        }
+
+        .col-custom {
+            &:nth-child(1) {
+                a {
+                    font-size: $fontSize-X_Large;
+                    font-family: 'Victormono';
+                    color: $Color-2;
+                }
+
+                address,
+                ul,
+                li {
+                    font-size: $fontSize-Light;
+                    color: $Color-2;
+                }
+
+                ul {
+                    padding-left: 0;
+                }
+
+                .social {
+                    li {
+                        padding: 0 8px;
+
+                        &:first-child {
+                            padding-left: 0;
+                        }
+
+                        a>svg {
+                            stroke: $Color-2;
+                        }
+                    }
+                }
+            }
+
+            &:not(:first-child) {
+                p {
+                    font-size: 18px;
+                    color: $Color-2;
+                }
+
+                ul {
+                    padding-left: 0;
+                    margin-bottom: 0;
+
+                    li {
+                        padding-bottom: 8px;
+                        transition: all 0.2s ease-in-out;
+
+                        a {
+                            font-size: $fontSize-Light;
+                            color: $Color-4;
+                        }
+
+                        &:hover {
+                            padding-left: 8px;
+
+                            a {
+                                color: $Color-5;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    .footer-bottom {
+        border-top: 1px solid #dddbd5;
+
+        p {
+            font-size: $fontSize-Light;
+            color: $Color-2;
+        }
+
+    }
+}
