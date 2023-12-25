@@ -17,12 +17,23 @@ const Home = () => {
   const [activeElem, setActiveElem] = useState(0);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [listItemBestSelling, setListItemBestSelling] = useState([]);
+  const [listItemLatest, setListItemLatest] = useState([]);
+  const [listItemSale, setListItemSale] = useState([]);
 
   const getUsers = async () => {
     try {
       let res = await dataProducts();
       let resBestSelling = res.data.sort(() => Math.random() - 0.5).slice(0, 8);
+      let resLatest = res.data.sort(() => Math.random() - 0.5).slice(0, 8);
+      let resSale = res.data
+        .filter((item) => {
+          return item.sale === true;
+        })
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 8);
       setListItemBestSelling(resBestSelling);
+      setListItemLatest(resLatest);
+      setListItemSale(resSale);
     } catch (error) {
       console.error(error);
     }
@@ -73,7 +84,7 @@ const Home = () => {
   return (
     <>
       <BannerSlide />
-      <div className="product-categories">
+      <section className="product-categories">
         <Container>
           <Row>
             <Col className="col_1" xs={8}>
@@ -176,8 +187,8 @@ const Home = () => {
             </Col>
           </Row>
         </Container>
-      </div>
-      <div className="product-carousel">
+      </section>
+      <section className="product-carousel">
         <Container>
           <Row className="custom-row1">
             <Col className="col1">
@@ -223,8 +234,8 @@ const Home = () => {
               exit={{ opacity: 0, y: 30 }}
             >
               <Row>
-                {listItemBestSelling &&
-                  listItemBestSelling.map((item, index) => {
+                {listItemLatest &&
+                  listItemLatest.map((item, index) => {
                     return (
                       <Col
                         className="custom-col mb-4"
@@ -320,7 +331,83 @@ const Home = () => {
               exit={{ opacity: 0, y: 30 }}
             >
               <Row>
-                <Col
+                {listItemBestSelling &&
+                  listItemBestSelling.map((item, index) => {
+                    return (
+                      <Col
+                        className="custom-col mb-4"
+                        xxl={3}
+                        xl={3}
+                        lg={3}
+                        md={4}
+                        sm={6}
+                        key={index}
+                      >
+                        <Link>
+                          <Card style={{ width: "18rem" }} className="border">
+                            <div className="img">
+                              <Card.Img
+                                variant="top"
+                                src={`https://websitebook-api.vercel.app${item.image}`}
+                              />
+                              <motion.div
+                                className="btn-icon quick-view"
+                                variants={btnIconAnimation}
+                                initial="hidden"
+                                whileHover="show"
+                              >
+                                <FaRegEye />
+                              </motion.div>
+                              <motion.div
+                                className="btn-icon add-fav-book"
+                                variants={btnIconAnimation}
+                                initial="hidden"
+                                whileHover="show"
+                              >
+                                <FaRegHeart />
+                              </motion.div>
+                            </div>
+                            <Card.Body className="border-bottom">
+                              <Card.Text>{item.categories}</Card.Text>
+                              <Card.Title>{item.name}</Card.Title>
+                              <p className="mb-0">
+                                <Link>{item.author}</Link>
+                              </p>
+                            </Card.Body>
+                            <div className="card-price">
+                              <ul className="d-flex align-items-center justify-content-between">
+                                <li>${item.price}</li>
+                                <li>
+                                  <motion.div
+                                    initial={{
+                                      y: 0,
+                                      background: "#F6F5F3",
+                                    }}
+                                    whileHover={{
+                                      y: -5,
+                                      background: "#161619",
+                                    }}
+                                    exit={{
+                                      y: 0,
+                                    }}
+                                    transition={{
+                                      duration: 0.4,
+                                      ease: "easeInOut",
+                                    }}
+                                  >
+                                    <Link>
+                                      <MdOutlineShoppingBag />
+                                    </Link>
+                                  </motion.div>
+                                </li>
+                              </ul>
+                            </div>
+                          </Card>
+                        </Link>
+                      </Col>
+                    );
+                  })}
+                {/* <Col
                   className="custom-col mb-4"
                   xxl={3}
                   xl={3}
@@ -882,7 +969,7 @@ const Home = () => {
                       </div>
                     </Card>
                   </Link>
-                </Col>
+                </Col> */}
               </Row>
             </motion.div>
             <motion.div
@@ -904,574 +991,90 @@ const Home = () => {
               exit={{ opacity: 0, y: 30 }}
             >
               <Row>
-                <Col
-                  className="custom-col mb-4"
-                  xxl={3}
-                  xl={3}
-                  lg={3}
-                  md={4}
-                  sm={6}
-                >
-                  <Link>
-                    <Card style={{ width: "18rem" }} className="border">
-                      <div className="img">
-                        <Card.Img
-                          variant="top"
-                          src="https://demo.kaliumtheme.com/bookstore/wp-content/uploads/2019/04/Waiting-for-Eden-A-novel-by-Elliot-Ackerman.jpg"
-                          style={{
-                            height: `${determineHeightImgProductCarousel()}px`,
-                          }}
-                        />
-                        <motion.div
-                          className="btn-icon quick-view"
-                          variants={btnIconAnimation}
-                          initial="hidden"
-                          whileHover="show"
-                        >
-                          <FaRegEye />
-                        </motion.div>
-                        <motion.div
-                          className="btn-icon add-fav-book"
-                          variants={btnIconAnimation}
-                          initial="hidden"
-                          whileHover="show"
-                        >
-                          <FaRegHeart />
-                        </motion.div>
-                      </div>
-                      <Card.Body className="border-bottom">
-                        <Card.Text>Bioraphy</Card.Text>
-                        <Card.Title>Mario Puzo-Ong Trum Cuoi Cung</Card.Title>
-                        <p className="mb-0">
-                          <Link>Marizo Puzo</Link>
-                        </p>
-                      </Card.Body>
-                      <div className="card-price">
-                        <ul className="d-flex align-items-center justify-content-between">
-                          <li>$9.00</li>
-                          <li>
-                            <motion.div
-                              initial={{
-                                y: 0,
-                                background: "#F6F5F3",
-                              }}
-                              whileHover={{
-                                y: -5,
-                                background: "#161619",
-                              }}
-                              exit={{
-                                y: 0,
-                              }}
-                              transition={{
-                                duration: 0.4,
-                                ease: "easeInOut",
-                              }}
-                            >
-                              <Link>
-                                <MdOutlineShoppingBag />
-                              </Link>
-                            </motion.div>
-                          </li>
-                        </ul>
-                      </div>
-                    </Card>
-                  </Link>
-                </Col>
-                <Col
-                  className="custom-col mb-4"
-                  xxl={3}
-                  xl={3}
-                  lg={3}
-                  md={4}
-                  sm={6}
-                >
-                  <Link>
-                    <Card style={{ width: "18rem" }} className="border">
-                      <div className="img">
-                        <Card.Img
-                          variant="top"
-                          src="https://demo.kaliumtheme.com/bookstore/wp-content/uploads/2019/04/Waiting-for-Eden-A-novel-by-Elliot-Ackerman.jpg"
-                        />
-                        <motion.div
-                          className="btn-icon quick-view"
-                          variants={btnIconAnimation}
-                          initial="hidden"
-                          whileHover="show"
-                        >
-                          <FaRegEye />
-                        </motion.div>
-                        <motion.div
-                          className="btn-icon add-fav-book"
-                          variants={btnIconAnimation}
-                          initial="hidden"
-                          whileHover="show"
-                        >
-                          <FaRegHeart />
-                        </motion.div>
-                      </div>
-                      <Card.Body className="border-bottom">
-                        <Card.Text>Bioraphy</Card.Text>
-                        <Card.Title>Mario Puzo-Ong Trum Cuoi Cung</Card.Title>
-                        <p className="mb-0">
-                          <Link>Marizo Puzo</Link>
-                        </p>
-                      </Card.Body>
-                      <div className="card-price">
-                        <ul className="d-flex align-items-center justify-content-between">
-                          <li>$9.00</li>
-                          <li>
-                            <motion.div
-                              initial={{
-                                y: 0,
-                                background: "#F6F5F3",
-                              }}
-                              whileHover={{
-                                y: -5,
-                                background: "#161619",
-                              }}
-                              exit={{
-                                y: 0,
-                              }}
-                              transition={{
-                                duration: 0.4,
-                                ease: "easeInOut",
-                              }}
-                            >
-                              <Link>
-                                <MdOutlineShoppingBag />
-                              </Link>
-                            </motion.div>
-                          </li>
-                        </ul>
-                      </div>
-                    </Card>
-                  </Link>
-                </Col>
-                <Col
-                  className="custom-col mb-4"
-                  xxl={3}
-                  xl={3}
-                  lg={3}
-                  md={4}
-                  sm={6}
-                >
-                  <Link>
-                    <Card style={{ width: "18rem" }} className="border">
-                      <div className="img">
-                        <Card.Img
-                          variant="top"
-                          src="https://demo.kaliumtheme.com/bookstore/wp-content/uploads/2019/04/Waiting-for-Eden-A-novel-by-Elliot-Ackerman.jpg"
-                        />
-                        <motion.div
-                          className="btn-icon quick-view"
-                          variants={btnIconAnimation}
-                          initial="hidden"
-                          whileHover="show"
-                        >
-                          <FaRegEye />
-                        </motion.div>
-                        <motion.div
-                          className="btn-icon add-fav-book"
-                          variants={btnIconAnimation}
-                          initial="hidden"
-                          whileHover="show"
-                        >
-                          <FaRegHeart />
-                        </motion.div>
-                      </div>
-                      <Card.Body className="border-bottom">
-                        <Card.Text>Bioraphy</Card.Text>
-                        <Card.Title>Mario Puzo-Ong Trum Cuoi Cung</Card.Title>
-                        <p className="mb-0">
-                          <Link>Marizo Puzo</Link>
-                        </p>
-                      </Card.Body>
-                      <div className="card-price">
-                        <ul className="d-flex align-items-center justify-content-between">
-                          <li>$9.00</li>
-                          <li>
-                            <motion.div
-                              initial={{
-                                y: 0,
-                                background: "#F6F5F3",
-                              }}
-                              whileHover={{
-                                y: -5,
-                                background: "#161619",
-                              }}
-                              exit={{
-                                y: 0,
-                              }}
-                              transition={{
-                                duration: 0.2,
-                                ease: "easeInOut",
-                              }}
-                            >
-                              <Link>
-                                <MdOutlineShoppingBag />
-                              </Link>
-                            </motion.div>
-                          </li>
-                        </ul>
-                      </div>
-                    </Card>
-                  </Link>
-                </Col>
-                <Col
-                  className="custom-col mb-2"
-                  xxl={3}
-                  xl={3}
-                  lg={3}
-                  md={4}
-                  sm={6}
-                >
-                  <Link>
-                    <Card style={{ width: "18rem" }} className="border">
-                      <div className="img">
-                        <Card.Img
-                          variant="top"
-                          src="https://demo.kaliumtheme.com/bookstore/wp-content/uploads/2019/04/Waiting-for-Eden-A-novel-by-Elliot-Ackerman.jpg"
-                        />
-                        <motion.div
-                          className="btn-icon quick-view"
-                          variants={btnIconAnimation}
-                          initial="hidden"
-                          whileHover="show"
-                        >
-                          <FaRegEye />
-                        </motion.div>
-                        <motion.div
-                          className="btn-icon add-fav-book"
-                          variants={btnIconAnimation}
-                          initial="hidden"
-                          whileHover="show"
-                        >
-                          <FaRegHeart />
-                        </motion.div>
-                      </div>
-                      <Card.Body className="border-bottom">
-                        <Card.Text>Bioraphy</Card.Text>
-                        <Card.Title>Mario Puzo-Ong Trum Cuoi Cung</Card.Title>
-                        <p className="mb-0">
-                          <Link>Marizo Puzo</Link>
-                        </p>
-                      </Card.Body>
-                      <div className="card-price">
-                        <ul className="d-flex align-items-center justify-content-between">
-                          <li>$9.00</li>
-                          <li>
-                            <motion.div
-                              initial={{
-                                y: 0,
-                                background: "#F6F5F3",
-                              }}
-                              whileHover={{
-                                y: -5,
-                                background: "#161619",
-                              }}
-                              exit={{
-                                y: 0,
-                              }}
-                              transition={{
-                                duration: 0.2,
-                                ease: "easeInOut",
-                              }}
-                            >
-                              <Link>
-                                <MdOutlineShoppingBag />
-                              </Link>
-                            </motion.div>
-                          </li>
-                        </ul>
-                      </div>
-                    </Card>
-                  </Link>
-                </Col>
-                <Col
-                  className="custom-col mb-2"
-                  xxl={3}
-                  xl={3}
-                  lg={3}
-                  md={4}
-                  sm={6}
-                >
-                  <Link>
-                    <Card style={{ width: "18rem" }} className="border">
-                      <div className="img">
-                        <Card.Img
-                          variant="top"
-                          src="https://demo.kaliumtheme.com/bookstore/wp-content/uploads/2019/04/Waiting-for-Eden-A-novel-by-Elliot-Ackerman.jpg"
-                        />
-                        <motion.div
-                          className="btn-icon quick-view"
-                          variants={btnIconAnimation}
-                          initial="hidden"
-                          whileHover="show"
-                        >
-                          <FaRegEye />
-                        </motion.div>
-                        <motion.div
-                          className="btn-icon add-fav-book"
-                          variants={btnIconAnimation}
-                          initial="hidden"
-                          whileHover="show"
-                        >
-                          <FaRegHeart />
-                        </motion.div>
-                      </div>
-                      <Card.Body className="border-bottom">
-                        <Card.Text>Bioraphy</Card.Text>
-                        <Card.Title>Mario Puzo-Ong Trum Cuoi Cung</Card.Title>
-                        <p className="mb-0">
-                          <Link>Marizo Puzo</Link>
-                        </p>
-                      </Card.Body>
-                      <div className="card-price">
-                        <ul className="d-flex align-items-center justify-content-between">
-                          <li>$9.00</li>
-                          <li>
-                            <motion.div
-                              initial={{
-                                y: 0,
-                                background: "#F6F5F3",
-                              }}
-                              whileHover={{
-                                y: -5,
-                                background: "#161619",
-                              }}
-                              exit={{
-                                y: 0,
-                              }}
-                              transition={{
-                                duration: 0.2,
-                                ease: "easeInOut",
-                              }}
-                            >
-                              <Link>
-                                <MdOutlineShoppingBag />
-                              </Link>
-                            </motion.div>
-                          </li>
-                        </ul>
-                      </div>
-                    </Card>
-                  </Link>
-                </Col>
-                <Col
-                  className="custom-col mb-2"
-                  xxl={3}
-                  xl={3}
-                  lg={3}
-                  md={4}
-                  sm={6}
-                >
-                  <Link>
-                    <Card style={{ width: "18rem" }} className="border">
-                      <div className="img">
-                        <Card.Img
-                          variant="top"
-                          src="https://demo.kaliumtheme.com/bookstore/wp-content/uploads/2019/04/Waiting-for-Eden-A-novel-by-Elliot-Ackerman.jpg"
-                        />
-                        <motion.div
-                          className="btn-icon quick-view"
-                          variants={btnIconAnimation}
-                          initial="hidden"
-                          whileHover="show"
-                        >
-                          <FaRegEye />
-                        </motion.div>
-                        <motion.div
-                          className="btn-icon add-fav-book"
-                          variants={btnIconAnimation}
-                          initial="hidden"
-                          whileHover="show"
-                        >
-                          <FaRegHeart />
-                        </motion.div>
-                      </div>
-                      <Card.Body className="border-bottom">
-                        <Card.Text>Bioraphy</Card.Text>
-                        <Card.Title>Mario Puzo-Ong Trum Cuoi Cung</Card.Title>
-                        <p className="mb-0">
-                          <Link>Marizo Puzo</Link>
-                        </p>
-                      </Card.Body>
-                      <div className="card-price">
-                        <ul className="d-flex align-items-center justify-content-between">
-                          <li>$9.00</li>
-                          <li>
-                            <motion.div
-                              initial={{
-                                y: 0,
-                                background: "#F6F5F3",
-                              }}
-                              whileHover={{
-                                y: -5,
-                                background: "#161619",
-                              }}
-                              exit={{
-                                y: 0,
-                              }}
-                              transition={{
-                                duration: 0.2,
-                                ease: "easeInOut",
-                              }}
-                            >
-                              <Link>
-                                <MdOutlineShoppingBag />
-                              </Link>
-                            </motion.div>
-                          </li>
-                        </ul>
-                      </div>
-                    </Card>
-                  </Link>
-                </Col>
-                <Col
-                  className="custom-col mb-2"
-                  xxl={3}
-                  xl={3}
-                  lg={3}
-                  md={4}
-                  sm={6}
-                >
-                  <Link>
-                    <Card style={{ width: "18rem" }} className="border">
-                      <div className="img">
-                        <Card.Img
-                          variant="top"
-                          src="https://demo.kaliumtheme.com/bookstore/wp-content/uploads/2019/04/Waiting-for-Eden-A-novel-by-Elliot-Ackerman.jpg"
-                        />
-                        <motion.div
-                          className="btn-icon quick-view"
-                          variants={btnIconAnimation}
-                          initial="hidden"
-                          whileHover="show"
-                        >
-                          <FaRegEye />
-                        </motion.div>
-                        <motion.div
-                          className="btn-icon add-fav-book"
-                          variants={btnIconAnimation}
-                          initial="hidden"
-                          whileHover="show"
-                        >
-                          <FaRegHeart />
-                        </motion.div>
-                      </div>
-                      <Card.Body className="border-bottom">
-                        <Card.Text>Bioraphy</Card.Text>
-                        <Card.Title>Mario Puzo-Ong Trum Cuoi Cung</Card.Title>
-                        <p className="mb-0">
-                          <Link>Marizo Puzo</Link>
-                        </p>
-                      </Card.Body>
-                      <div className="card-price">
-                        <ul className="d-flex align-items-center justify-content-between">
-                          <li>$9.00</li>
-                          <li>
-                            <motion.div
-                              initial={{
-                                y: 0,
-                                background: "#F6F5F3",
-                              }}
-                              whileHover={{
-                                y: -5,
-                                background: "#161619",
-                              }}
-                              exit={{
-                                y: 0,
-                              }}
-                              transition={{
-                                duration: 0.2,
-                                ease: "easeInOut",
-                              }}
-                            >
-                              <Link>
-                                <MdOutlineShoppingBag />
-                              </Link>
-                            </motion.div>
-                          </li>
-                        </ul>
-                      </div>
-                    </Card>
-                  </Link>
-                </Col>
-                <Col
-                  className="custom-col mb-2"
-                  xxl={3}
-                  xl={3}
-                  lg={3}
-                  md={4}
-                  sm={6}
-                >
-                  <Link>
-                    <Card style={{ width: "18rem" }} className="border">
-                      <div className="img">
-                        <Card.Img
-                          variant="top"
-                          src="https://demo.kaliumtheme.com/bookstore/wp-content/uploads/2019/04/Waiting-for-Eden-A-novel-by-Elliot-Ackerman.jpg"
-                        />
-                        <motion.div
-                          className="btn-icon quick-view"
-                          variants={btnIconAnimation}
-                          initial="hidden"
-                          whileHover="show"
-                        >
-                          <FaRegEye />
-                        </motion.div>
-                        <motion.div
-                          className="btn-icon add-fav-book"
-                          variants={btnIconAnimation}
-                          initial="hidden"
-                          whileHover="show"
-                        >
-                          <FaRegHeart />
-                        </motion.div>
-                      </div>
-                      <Card.Body className="border-bottom">
-                        <Card.Text>Bioraphy</Card.Text>
-                        <Card.Title>Mario Puzo-Ong Trum Cuoi Cung</Card.Title>
-                        <p className="mb-0">
-                          <Link>Marizo Puzo</Link>
-                        </p>
-                      </Card.Body>
-                      <div className="card-price">
-                        <ul className="d-flex align-items-center justify-content-between">
-                          <li>$9.00</li>
-                          <li>
-                            <motion.div
-                              initial={{
-                                y: 0,
-                                background: "#F6F5F3",
-                              }}
-                              whileHover={{
-                                y: -5,
-                                background: "#161619",
-                              }}
-                              exit={{
-                                y: 0,
-                              }}
-                              transition={{
-                                duration: 0.2,
-                                ease: "easeInOut",
-                              }}
-                            >
-                              <Link>
-                                <MdOutlineShoppingBag />
-                              </Link>
-                            </motion.div>
-                          </li>
-                        </ul>
-                      </div>
-                    </Card>
-                  </Link>
-                </Col>
+                {listItemSale &&
+                  listItemSale.map((item, index) => {
+                    return (
+                      <Col
+                        className="custom-col mb-4"
+                        xxl={3}
+                        xl={3}
+                        lg={3}
+                        md={4}
+                        sm={6}
+                        key={index}
+                        onClick={() =>
+                          console.log("day la index cua item", item.id)
+                        }
+                      >
+                        <Link>
+                          <Card style={{ width: "18rem" }} className="border">
+                            <div className="img">
+                              <Card.Img
+                                variant="top"
+                                src={`https://websitebook-api.vercel.app${item.image}`}
+                              />
+                              <motion.div
+                                className="btn-icon quick-view"
+                                variants={btnIconAnimation}
+                                initial="hidden"
+                                whileHover="show"
+                              >
+                                <FaRegEye />
+                              </motion.div>
+                              <motion.div
+                                className="btn-icon add-fav-book"
+                                variants={btnIconAnimation}
+                                initial="hidden"
+                                whileHover="show"
+                              >
+                                <FaRegHeart />
+                              </motion.div>
+                            </div>
+                            <Card.Body className="border-bottom">
+                              <Card.Text>{item.categories}</Card.Text>
+                              <Card.Title>{item.name}</Card.Title>
+                              <p className="mb-0">
+                                <Link>{item.author}</Link>
+                              </p>
+                            </Card.Body>
+                            <div className="card-price">
+                              <ul className="d-flex align-items-center justify-content-between">
+                                <li>${item.price}</li>
+                                <li>
+                                  <motion.div
+                                    initial={{
+                                      y: 0,
+                                      background: "#F6F5F3",
+                                    }}
+                                    whileHover={{
+                                      y: -5,
+                                      background: "#161619",
+                                    }}
+                                    exit={{
+                                      y: 0,
+                                    }}
+                                    transition={{
+                                      duration: 0.4,
+                                      ease: "easeInOut",
+                                    }}
+                                  >
+                                    <Link>
+                                      <MdOutlineShoppingBag />
+                                    </Link>
+                                  </motion.div>
+                                </li>
+                              </ul>
+                            </div>
+                          </Card>
+                        </Link>
+                      </Col>
+                    );
+                  })}
               </Row>
             </motion.div>
           </section>
         </Container>
-      </div>
+      </section>
     </>
   );
 };
