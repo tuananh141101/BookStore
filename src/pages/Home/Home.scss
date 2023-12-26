@@ -152,6 +152,7 @@
                 span {
                     opacity: .9;
                     color: $Color-2;
+                    letter-spacing: 1px;
                 }
             }
 
@@ -391,7 +392,7 @@
 
 .author-carousel {
     .container {
-        .row {
+        .row:first-child {
             padding-top: 68px;
             padding-bottom: 16px;
 
@@ -405,6 +406,7 @@
                 span {
                     color: $Color-2;
                     opacity: .9;
+                    letter-spacing: 1px;
                 }
             }
 
@@ -412,6 +414,41 @@
                 span {
                     text-decoration: underline;
                     cursor: pointer;
+                }
+            }
+        }
+
+        .row:last-child {
+            padding-top: 16px;
+
+            .slick-slide {
+                img {
+                    width: 130px;
+                    height: 130px;
+                }
+
+                p {
+                    margin-top: 8px;
+                    font-size: $fontSize-Medium;
+                    color: $Color-1;
+                    font-weight: bold;
+                }
+
+                span {
+                    font-size: $fontSize-Light;
+                    color: $Color-2;
+                    opacity: .9;
+                }
+            }
+
+            .slick-dots {
+                li>button::before {
+                    font-size: $fontSize-Extra_Light;
+                    color: $Color-2;
+                }
+
+                li.slick-active>button::before {
+                    color: $Color-2;
                 }
             }
         }
