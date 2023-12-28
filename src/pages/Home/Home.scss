@@ -1,5 +1,6 @@
 @import '../../assets/styles/common';
 
+
 .product-categories {
     .container {
         .row:first-child {
@@ -442,6 +443,8 @@
             }
 
             .slick-dots {
+                bottom: -35px;
+
                 li>button::before {
                     font-size: $fontSize-Extra_Light;
                     color: $Color-2;
@@ -451,6 +454,134 @@
                     color: $Color-2;
                 }
             }
+        }
+    }
+}
+
+.selected-book {
+    margin-bottom: 16px;
+    margin-top: 48px;
+    padding-top: 48px;
+    padding-bottom: 48px;
+    // background-color: $backGround-input;
+    background-image: url('../../assets/images/beatriz-perez-moya-XN4T2PVUUgk-unsplash\ 1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: left center;
+    position: relative;
+
+    .container {
+        .row:first-child {
+            padding-bottom: 16px;
+
+            .col {
+                ul {
+                    padding-left: 0;
+                    margin-bottom: 0;
+
+                    li {
+                        p {
+                            font-size: $fontSize-Large;
+                            font-family: 'Victormono';
+                            font-weight: bold;
+                        }
+
+                        span {
+                            font-size: $fontSize-Medium;
+                            color: $Color-2;
+                            opacity: .9;
+                            letter-spacing: 1px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .row:last-child {
+            padding-top: 16px;
+
+            ul {
+                padding-left: 0;
+                margin-bottom: 12px;
+
+                li.author {
+                    span {
+                        padding: 4px 0;
+
+                        &:first-child {
+                            color: $Color-2;
+                            opacity: .8;
+                        }
+
+                        &:last-child {
+                            color: $Color-2;
+                            opacity: 1;
+                        }
+                    }
+                }
+
+                li.categories {
+                    span {
+                        padding: 4px 0;
+
+                        &:first-child {
+                            color: $Color-2;
+                            opacity: .8;
+                        }
+
+                        &:last-child {
+                            color: $Color-2;
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+
+            p {
+                font-size: $fontSize-X_Large;
+                font-weight: bold;
+            }
+
+            span {
+                color: $Color-2;
+                // opacity: .8;
+                line-height: 1.7;
+                margin: 12px 0;
+                letter-spacing: 1px;
+            }
+
+            .quantity {
+                input {
+                    width: 65px;
+                    height: 35px;
+                    text-align: center;
+                }
+            }
+
+            button {
+                outline: none;
+                border-radius: 2px;
+                border: 1px solid $Color-1;
+                background-color: white;
+                width: 156px;
+                height: 35px;
+                margin-left: 12px;
+
+                &:hover {
+                    background-color: $Color-1;
+                    color: white;
+                }
+            }
+
+            img {
+                width: 346px;
+                height: 461.33px;
+            }
+
+            .info {
+                padding-left: 28px;
+            }
+
         }
     }
 }

@@ -1,5 +1,4 @@
 import { Col, Container, Row } from "react-bootstrap";
-import { motion, useAnimation } from "framer-motion";
 import "./Header.scss";
 import { Link } from "react-router-dom";
 import { LuMapPin } from "react-icons/lu";
@@ -39,7 +38,6 @@ const Header = () => {
 
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1200);
   const [containerPadding, setContainerPadding] = useState("py-4");
-  const [isHovered, setIsHovered] = useState(false); //*hover item
   const [show, setShow] = useState(false); //*offcanvas
   const [categoriesOpen, setCategoriesOpen] = useState(false);
   const [otherOpen, setOtherOpen] = useState(false);

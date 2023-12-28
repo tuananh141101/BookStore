@@ -5,18 +5,22 @@ import BannerSlide from "../../components/Banner-Slide/BannerSlide";
 import ProductCategories from "../../components/Home/ProductCategories";
 import ProductItemCarousel from "../../components/Home/ProductItemCarousel";
 import AuthorCarousel from "../../components/Home/AuthorCarousel";
+import SelectedBook from "../../components/Home/SelectedBook";
 
 const Home = () => {
   const [listItemBestSelling, setListItemBestSelling] = useState([]);
   const [listItemLatest, setListItemLatest] = useState([]);
   const [listItemSale, setListItemSale] = useState([]);
+  const [dataItem, setDataItem] = useState([]);
 
   const getUsers = async () => {
     try {
       let res = await dataProducts();
-      let resBestSelling = res.data.sort(() => Math.random() - 0.5).slice(0, 8);
-      let resLatest = res.data.sort(() => Math.random() - 0.5).slice(0, 8);
-      let resSale = res.data
+      let resBestSelling = [...res.data]
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 8);
+      let resLatest = [...res.data].sort(() => Math.random() - 0.5).slice(0, 8);
+      let resSale = [...res.data]
         .filter((item) => {
           return item.sale === true;
         })
@@ -25,10 +29,7 @@ const Home = () => {
       setListItemBestSelling(resBestSelling);
       setListItemLatest(resLatest);
       setListItemSale(resSale);
-      let authorr = res.data.filter((item) => {
-        return item.author;
-      });
-      console.log(authorr);
+      setDataItem(res.data);
     } catch (error) {
       console.error(error);
     }
@@ -46,7 +47,8 @@ const Home = () => {
         listItemBestSelling={listItemBestSelling}
         listItemLatest={listItemLatest}
       />
-      <AuthorCarousel />
+      <SelectedBook />
+      <AuthorCarousel dataItem={dataItem} />
     </>
   );
 };
