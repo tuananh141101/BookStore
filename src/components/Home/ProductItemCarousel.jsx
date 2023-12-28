@@ -54,7 +54,7 @@ const ProductItemCarousel = ({
   };
   return (
     <>
-      <section className="product-carousel">
+      <section className="product-item-carousel">
         <Container>
           <Row className="custom-row1">
             <Col className="col1" sm={6}>
