@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import Image from "react-bootstrap/Image";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { IoIosArrowForward } from "react-icons/io";
 
 const AuthorCarousel = ({ dataItem }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -35,18 +36,28 @@ const AuthorCarousel = ({ dataItem }) => {
     slidesToScroll: slidesToShowAndScoll(),
   };
 
+  const handleClickAuthor = (authorID) => () => {
+    console.log("Day la id", authorID);
+  };
+
   return (
     <>
       <seciton className="author-carousel">
         <Container>
           <Row>
-            <Col>
+            <Col sm={6} className="custom-col">
               <p className="mb-0">Author</p>
-              <span>Most author fav</span>
+              <span>Favorite authors</span>
             </Col>
-            <Col className="d-flex align-items-center justify-content-end">
+            <Col
+              className="d-flex align-items-center justify-content-end custom-col"
+              sm={6}
+            >
               <span>
-                <Link to="/author">View Another Author</Link>
+                <Link to="/author">
+                  More Author
+                  <IoIosArrowForward />
+                </Link>
               </span>
             </Col>
           </Row>
@@ -56,6 +67,7 @@ const AuthorCarousel = ({ dataItem }) => {
                 <div
                   className="d-flex align-items-center justify-content-center flex-column author-info"
                   key={index}
+                  onClick={handleClickAuthor(item.id)}
                 >
                   <Image
                     src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
