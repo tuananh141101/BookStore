@@ -3,7 +3,8 @@
 .footer {
 
     .footer-top {
-        margin: 42px 0;
+        padding: 42px 0;
+        background-color: $backGround-input;
 
         div {
             p {
@@ -48,10 +49,12 @@
                     background-color: white;
                     border: 1px solid $Color-1;
                     color: $Color-1;
+                    transition: .2s ease-in-out;
 
                     &:hover {
                         background-color: $Color-1;
                         color: white;
+                        transition: .2s ease-in-out;
                     }
                 }
 
@@ -74,7 +77,8 @@
 
     .footer-center {
         .row:first-child {
-            margin-bottom: 42px;
+            margin-bottom: 38px;
+            margin-top: 48px;
         }
 
         .col-custom {
