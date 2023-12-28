@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { IoIosArrowForward } from "react-icons/io";
 import { Col, Container, Row, Image } from "react-bootstrap";
 
 const SelectedBook = () => {
@@ -68,7 +69,9 @@ const SelectedBook = () => {
                     type="number"
                     value={quantityInput}
                     onChange={(e) => {
-                      setQuantityInput(e.target.value);
+                      if (e.target.value >= 1) {
+                        setQuantityInput(e.target.value);
+                      }
                     }}
                   />
                 </div>
@@ -91,7 +94,10 @@ const SelectedBook = () => {
               className="d-flex align-items-center justify-content-end custom-col"
               sm={6}
             >
-              <button>Benefit from this offer</button>
+              <button>
+                Benefit from this offer
+                <IoIosArrowForward />
+              </button>
             </Col>
           </Row>
         </Container>
