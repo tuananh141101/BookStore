@@ -6,6 +6,7 @@ import ProductCategories from "../../components/Home/ProductCategories";
 import ProductItemCarousel from "../../components/Home/ProductItemCarousel";
 import AuthorCarousel from "../../components/Home/AuthorCarousel";
 import SelectedBook from "../../components/Home/SelectedBook";
+import ProductBlog from "../../components/Home/ProductBlog";
 
 const Home = () => {
   const [listItemBestSelling, setListItemBestSelling] = useState([]);
@@ -48,6 +49,7 @@ const Home = () => {
         listItemLatest={listItemLatest}
       />
       <SelectedBook />
+      <ProductBlog />
       <AuthorCarousel dataItem={dataItem} />
     </>
   );

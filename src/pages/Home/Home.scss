@@ -32,13 +32,12 @@
                 justify-content: center;
 
                 .col_1 {
-                    text-align: center;
                     width: 100%;
                 }
 
                 .col_2 {
                     width: 100%;
-                    justify-content: center !important;
+                    justify-content: start !important;
                 }
             }
         }
@@ -137,7 +136,7 @@
     }
 }
 
-.product-carousel {
+.product-item-carousel {
     .container {
         .row:first-child {
             padding-top: 68px;
@@ -392,12 +391,13 @@
 }
 
 .author-carousel {
+    background-color: aqua;
+
     .container {
         .row:first-child {
-            padding-top: 68px;
             padding-bottom: 16px;
 
-            .col:nth-child(1) {
+            .custom-col:nth-child(1) {
                 p {
                     font-size: 24px;
                     font-weight: bold;
@@ -411,18 +411,34 @@
                 }
             }
 
-            .col:nth-child(2) {
+            .custom-col:nth-child(2) {
                 span {
                     text-decoration: underline;
                     cursor: pointer;
                 }
             }
+
+            @media screen and (max-width: $breakpointSmall) {
+                .custom-col:nth-child(1) {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                }
+
+                .custom-col:nth-child(2) {
+                    justify-content: center !important;
+                }
+            }
         }
 
         .row:last-child {
+            padding-bottom: 80px;
             padding-top: 16px;
 
             .slick-slide {
+                cursor: pointer;
+
                 img {
                     width: 130px;
                     height: 130px;
@@ -542,11 +558,11 @@
 
             span {
                 color: $Color-2;
-                // opacity: .8;
                 line-height: 1.7;
                 margin: 12px 0;
                 letter-spacing: 1px;
                 font-size: $fontSize-Light;
+                width: 450px;
             }
 
             .quantity {
@@ -565,6 +581,7 @@
                 width: 156px;
                 height: 35px;
                 margin-left: 12px;
+                transition: 0.2s ease-in-out;
 
                 &:hover {
                     background-color: $Color-1;
@@ -594,6 +611,7 @@
 
                 span {
                     letter-spacing: 0;
+                    width: 100%;
                 }
             }
 
@@ -611,7 +629,7 @@
 
     .container {
         .row {
-            padding: 48px 0;
+            padding: 36px 0;
 
             .custom-col {
                 &:first-child {
@@ -636,13 +654,23 @@
                         color: white;
                         padding: 12px 16px;
                         border-radius: 2px;
+                        transition: 0.2s ease-in-out;
+
+                        svg {
+                            fill: white;
+                        }
 
                         &:hover {
                             background-color: white;
                             border: 1px solid $Color-1;
                             color: $Color-1;
                             transition: 0.2s ease-in-out;
+
+                            svg {
+                                fill: $Color-1;
+                            }
                         }
+
                     }
                 }
 
@@ -653,6 +681,127 @@
                             margin-top: 14px;
                         }
                     }
+                }
+            }
+        }
+    }
+}
+
+.product-blog {
+    .container {
+        .row:first-child {
+            padding-top: 48px;
+            padding-bottom: 16px;
+
+            .custom-col:first-child {
+                p {
+                    font-size: 24px;
+                    font-family: 'Victormono';
+                    font-weight: bold;
+                }
+
+                span {
+                    opacity: .9;
+                    letter-spacing: 1px;
+                    color: $Color-2;
+                }
+            }
+
+            .custom-col:last-child {
+                span>a {
+                    text-decoration: underline;
+                }
+
+                @media screen and (max-width: $breakpointSmall) {
+                    justify-content: start !important;
+                }
+            }
+        }
+
+        .row:last-child {
+            padding-bottom: 48px;
+            padding-top: 16px;
+
+            .custom-col {
+                cursor: pointer;
+                padding-bottom: 24px;
+
+                img {
+                    width: 166.5px;
+                    height: 124.50px;
+                    object-fit: cover;
+                    border-radius: 2px;
+                    position: relative;
+                    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                }
+
+                ul {
+                    margin-bottom: 0;
+                    padding-left: 14px;
+
+                    li {
+                        &:first-child {
+                            padding-bottom: 8px;
+
+                            span {
+                                color: $Color-2;
+                                font-size: $fontSize-Light;
+                                opacity: .9;
+                            }
+                        }
+
+                        &:last-child {
+                            span {
+                                font-family: 'Victormono';
+                                font-size: 14px;
+                                font-weight: bold;
+                            }
+                        }
+                    }
+                }
+
+                .Image {
+                    position: relative;
+
+                    .overlay {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(246, 245, 243, 0.7);
+                        opacity: 0;
+                        visibility: hidden;
+                        transition: .4s ease-in-out;
+
+                        svg {
+                            fill: $Color-1;
+                            stroke: $Color-1;
+                            width: 24px;
+                            height: 24px;
+                            transform: translateY(-12px);
+                            transition: .3s ease-in-out;
+                        }
+
+                    }
+
+                    &:hover {
+                        .overlay {
+                            opacity: 1;
+                            visibility: visible;
+                            transition: .3s ease-in-out;
+
+                            svg {
+                                transform: translateY(0);
+                                transition: .3s ease-in-out;
+                            }
+                        }
+                    }
+                }
+
+                &:nth-child(3),
+                &:nth-child(4) {
+                    padding-bottom: 0;
                 }
             }
         }
