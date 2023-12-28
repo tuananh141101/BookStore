@@ -1,8 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Col, Container, Row, Image } from "react-bootstrap";
 
 const SelectedBook = () => {
   const [quantityInput, setQuantityInput] = useState(1);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <>
       <section className="selected-book">
@@ -21,14 +32,18 @@ const SelectedBook = () => {
           </Row>
           <Row>
             <Col
-              className="d-flex align-items-center justify-content-end"
+              className={`d-flex align-items-center ${
+                windowWidth <= 768
+                  ? "justify-content-center"
+                  : "justify-content-end"
+              }`}
               md={5}
             >
               <Image src="https://websitebook-api.vercel.app/images/img-book-10.png" />
             </Col>
             <Col className="d-flex align-items-start flex-column info" md={7}>
               <p className="mb-0">Know Why the Caged Bird Sings</p>
-              <span style={{ width: "450px" }}>
+              <span>
                 Here is a book as joyous and painful, as mysterious and
                 memorable, as childhood itself. I Know Why the Caged Bird Sings
                 captures the longing of lonely children, the brute insult of
@@ -62,12 +77,22 @@ const SelectedBook = () => {
             </Col>
           </Row>
         </Container>
-        <div className="overlay"></div>
       </section>
       <section className="special">
         <Container>
           <Row>
-            <Col>Special</Col>
+            <Col sm={6} className="custom-col">
+              <p className="mb-0">Get 30% Off</p>
+              <span>
+                Special monthly deal for purchases orders over $150.00.
+              </span>
+            </Col>
+            <Col
+              className="d-flex align-items-center justify-content-end custom-col"
+              sm={6}
+            >
+              <button>Benefit from this offer</button>
+            </Col>
           </Row>
         </Container>
       </section>
