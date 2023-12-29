@@ -47,6 +47,7 @@ const Home = () => {
         listItemSale={listItemSale}
         listItemBestSelling={listItemBestSelling}
         listItemLatest={listItemLatest}
+        dataItem={dataItem}
       />
       <SelectedBook />
       <ProductBlog />

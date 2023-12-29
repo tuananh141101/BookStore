@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { Col, Container, Row, Image } from "react-bootstrap";
+import { useInView, motion, easeInOut } from "framer-motion";
 
 const SelectedBook = () => {
   const [quantityInput, setQuantityInput] = useState(1);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   useEffect(() => {
     const handleResize = () => {
@@ -40,7 +43,16 @@ const SelectedBook = () => {
               }`}
               md={5}
             >
-              <Image src="https://websitebook-api.vercel.app/images/img-book-10.png" />
+              <div
+                ref={ref}
+                style={{
+                  opacity: isInView ? 1 : 0,
+                  transition: "0.5s ease-in-out",
+                  transform: `translateY(${isInView ? 0 : 30}px)`,
+                }}
+              >
+                <Image src="https://websitebook-api.vercel.app/images/img-book-10.png" />
+              </div>
             </Col>
             <Col className="d-flex align-items-start flex-column info" md={7}>
               <p className="mb-0">Know Why the Caged Bird Sings</p>

@@ -16,16 +16,15 @@ const AuthorCarousel = ({ dataItem }) => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
   const slidesToShowAndScoll = () => {
-    if (windowWidth <= 575) {
-      return 1;
-    } else if (windowWidth <= 992) {
-      return 3;
-    } else if (windowWidth <= 1200) {
-      return 4;
-    } else {
-      return 5;
-    }
+    return windowWidth <= 575
+      ? 1
+      : windowWidth <= 992
+      ? 3
+      : windowWidth <= 1200
+      ? 4
+      : 5;
   };
 
   const settings = {

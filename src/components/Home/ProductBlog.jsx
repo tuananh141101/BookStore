@@ -2,9 +2,12 @@ import { Col, Container, Row, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
 import { FaLinkSlash } from "react-icons/fa6";
-import { motion } from "framer-motion";
+import { easeInOut, motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const ProductBlog = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
   return (
     <>
       <section className="product-blog">
@@ -30,7 +33,15 @@ const ProductBlog = () => {
           </Row>
           <Row>
             <Col className="custom-col" lg={6}>
-              <div className="d-flex align-items-center justify-content-start">
+              <div
+                className="d-flex align-items-center justify-content-start"
+                ref={ref}
+                style={{
+                  opacity: isInView ? 1 : 0,
+                  transform: `translateX(${isInView ? 0 : -20}px)`,
+                  transition: "0.5s ease-in-out",
+                }}
+              >
                 <div className="Image">
                   <img src="https://demo.kaliumtheme.com/bookstore/wp-content/uploads/2019/03/4096-2731-304fc25e-2cbe-4a50-a540-46eeff3dd941-1482x635.jpg" />
                   <div className="overlay d-flex align-items-center justify-content-center">
@@ -52,7 +63,15 @@ const ProductBlog = () => {
               </div>
             </Col>
             <Col className="custom-col" lg={6}>
-              <div className="d-flex align-items-center justify-content-start">
+              <div
+                className="d-flex align-items-center justify-content-start"
+                ref={ref}
+                style={{
+                  opacity: isInView ? 1 : 0,
+                  transform: `translateX(${isInView ? 0 : -20}px)`,
+                  transition: "0.5s ease-in-out 0.2s",
+                }}
+              >
                 <div className="Image">
                   <img src="https://demo.kaliumtheme.com/bookstore/wp-content/uploads/2019/02/josh-applegate-1357030-unsplash-1482x635.jpg" />
                   <div className="overlay d-flex align-items-center justify-content-center">
@@ -73,7 +92,15 @@ const ProductBlog = () => {
               </div>
             </Col>
             <Col className="custom-col" lg={6}>
-              <div className="d-flex align-items-center justify-content-start">
+              <div
+                className="d-flex align-items-center justify-content-start"
+                ref={ref}
+                style={{
+                  opacity: isInView ? 1 : 0,
+                  transform: `translateX(${isInView ? 0 : -20}px)`,
+                  transition: "0.5s ease-in-out 0.4s",
+                }}
+              >
                 <div className="Image">
                   <img src="https://demo.kaliumtheme.com/bookstore/wp-content/uploads/2019/03/merlin_108104686_134e70f3-a1fd-4a42-8838-f1e8c274501d-superJumbo.jpg" />
                   <div className="overlay d-flex align-items-center justify-content-center">
@@ -95,7 +122,15 @@ const ProductBlog = () => {
               </div>
             </Col>
             <Col className="custom-col" lg={6}>
-              <div className="d-flex align-items-center justify-content-start">
+              <div
+                className="d-flex align-items-center justify-content-start"
+                ref={ref}
+                style={{
+                  opacity: isInView ? 1 : 0,
+                  transform: `translateX(${isInView ? 0 : -20}px)`,
+                  transition: "0.5s ease-in-out 0.6s",
+                }}
+              >
                 <div className="Image">
                   <img src="https://demo.kaliumtheme.com/bookstore/wp-content/uploads/2019/03/digital-vs-print.jpg" />
                   <div className="overlay d-flex align-items-center justify-content-center">

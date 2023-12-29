@@ -6,7 +6,8 @@ import { MdOutlineShoppingBag } from "react-icons/md";
 import { FaRegEye } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
+import Offcanvas from "react-bootstrap/Offcanvas";
+import PreviewItem from "./PreViewItem/PreviewItem";
 const ProductItemCarousel = ({
   listItemBestSelling,
   listItemLatest,
@@ -14,6 +15,11 @@ const ProductItemCarousel = ({
 }) => {
   const [activeElem, setActiveElem] = useState(0);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [show, setShow] = useState(false);
+  const [idItem, setIdItem] = useState("");
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     const handleResize = () => {
@@ -87,7 +93,7 @@ const ProductItemCarousel = ({
               </nav>
             </Col>
           </Row>
-          <section className="carousel">
+          <div className="carousel">
             <motion.div
               className={`carousel-bestselling carousel-card ${
                 activeElem === 0 ? "active" : ""
@@ -322,13 +328,10 @@ const ProductItemCarousel = ({
                         md={4}
                         sm={6}
                         key={index}
-                        onClick={() =>
-                          console.log("day la index cua item", item.id)
-                        }
                       >
-                        <Link>
-                          <Card style={{ width: "18rem" }} className="border">
-                            <div className="img">
+                        <Card style={{ width: "18rem" }} className="border">
+                          <div className="img">
+                            <Link to={`categories/products/${item.id}`}>
                               <Card.Img
                                 variant="top"
                                 src={`https://websitebook-api.vercel.app${item.image}`}
@@ -338,68 +341,91 @@ const ProductItemCarousel = ({
                                   )}px`,
                                 }}
                               />
-                              <motion.div
-                                className="btn-icon quick-view"
-                                variants={btnIconAnimation}
-                                initial="hidden"
-                                whileHover="show"
-                              >
-                                <FaRegEye />
-                              </motion.div>
-                              <motion.div
-                                className="btn-icon add-fav-book"
-                                variants={btnIconAnimation}
-                                initial="hidden"
-                                whileHover="show"
-                              >
-                                <FaRegHeart />
-                              </motion.div>
-                            </div>
-                            <Card.Body className="border-bottom">
+                            </Link>
+
+                            <motion.div
+                              className="btn-icon quick-view"
+                              variants={btnIconAnimation}
+                              initial="hidden"
+                              whileHover="show"
+                              onClick={() => {
+                                setShow(true);
+                                setIdItem(item.id);
+                              }}
+                            >
+                              <FaRegEye />
+                            </motion.div>
+                            <motion.div
+                              className="btn-icon add-fav-book"
+                              variants={btnIconAnimation}
+                              initial="hidden"
+                              whileHover="show"
+                            >
+                              <FaRegHeart />
+                            </motion.div>
+                          </div>
+                          <Card.Body className="border-bottom">
+                            <Link to={`categories/products/${item.id}`}>
                               <Card.Text>{item.categories}</Card.Text>
                               <Card.Title>{item.name}</Card.Title>
                               <p className="mb-0">
                                 <Link>{item.author}</Link>
                               </p>
-                            </Card.Body>
-                            <div className="card-price">
-                              <ul className="d-flex align-items-center justify-content-between">
-                                <li>${item.price}</li>
-                                <li>
-                                  <motion.div
-                                    initial={{
-                                      y: 0,
-                                      background: "#F6F5F3",
-                                    }}
-                                    whileHover={{
-                                      y: -5,
-                                      background: "#161619",
-                                    }}
-                                    exit={{
-                                      y: 0,
-                                    }}
-                                    transition={{
-                                      duration: 0.4,
-                                      ease: "easeInOut",
-                                    }}
-                                  >
-                                    <Link>
-                                      <MdOutlineShoppingBag />
-                                    </Link>
-                                  </motion.div>
-                                </li>
-                              </ul>
-                            </div>
-                          </Card>
-                        </Link>
+                            </Link>
+                          </Card.Body>
+                          <div className="card-price">
+                            <ul className="d-flex align-items-center justify-content-between">
+                              <li>${item.price}</li>
+                              <li>
+                                <motion.div
+                                  initial={{
+                                    y: 0,
+                                    background: "#F6F5F3",
+                                  }}
+                                  whileHover={{
+                                    y: -5,
+                                    background: "#161619",
+                                  }}
+                                  exit={{
+                                    y: 0,
+                                  }}
+                                  transition={{
+                                    duration: 0.4,
+                                    ease: "easeInOut",
+                                  }}
+                                >
+                                  <Link>
+                                    <MdOutlineShoppingBag />
+                                  </Link>
+                                </motion.div>
+                              </li>
+                            </ul>
+                          </div>
+                        </Card>
                       </Col>
                     );
                   })}
               </Row>
             </motion.div>
-          </section>
+          </div>
         </Container>
       </section>
+      <Offcanvas
+        className="Modal-preview-item"
+        show={show}
+        onHide={handleClose}
+        style={{
+          top: "50%",
+          left: "50%",
+          width: "50%",
+          height: "60%",
+          transform: `translate(-50%,-50%)`,
+        }}
+      >
+        <Offcanvas.Body>
+          <PreviewItem setShow={setShow} idItem={idItem} />
+        </Offcanvas.Body>
+      </Offcanvas>
     </>
   );
 };
