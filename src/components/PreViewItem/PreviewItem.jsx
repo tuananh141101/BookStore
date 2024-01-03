@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { dataProducts } from "../../../services/UserServices";
+import { dataProducts } from "../../services/UserServices";
 import { Col, Row, Spinner } from "react-bootstrap";
 import "./index.scss";
 import { Link } from "react-router-dom";
@@ -25,7 +25,7 @@ const PreviewItem = ({ idItem, show }) => {
       setDataItemPreview(resData);
       setTimeout(() => {
         setLoading(false);
-      }, 250);
+      }, 100);
     } catch (error) {
       console.log(error);
     }
@@ -36,7 +36,7 @@ const PreviewItem = ({ idItem, show }) => {
   }, []);
 
   const handleAddToCart = (item) => {
-    toast(`${item.name}product added to cart`, {
+    toast(`✅ ${item.name}product added to cart`, {
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,

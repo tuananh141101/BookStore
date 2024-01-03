@@ -1,5 +1,5 @@
 import "./Home.scss";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { dataProducts } from "../../services/UserServices";
 import BannerSlide from "../../components/Banner-Slide/BannerSlide";
 import ProductCategories from "../../components/Home/ProductCategories";

@@ -162,7 +162,7 @@ const Header = () => {
                   </li>
                   <li className={isMobile ? "hidden" : ""}>
                     <span>
-                      <Link>
+                      <Link to="categories">
                         Categories
                         <span>
                           <IoMdArrowDropdown />
@@ -225,7 +225,7 @@ const Header = () => {
                     </div>
                   </li>
                   <li className={isMobile ? "hidden" : ""}>
-                    <Link>Blog</Link>
+                    <Link to="blog">Blog</Link>
                   </li>
                   <li className={isMobile ? "hidden" : ""}>
                     <span>
@@ -240,22 +240,22 @@ const Header = () => {
                       <ul>
                         <li>
                           <span>
-                            <Link>Contact Us</Link>
+                            <Link to="contact">Contact Us</Link>
                           </span>
                         </li>
                         <li>
                           <span>
-                            <Link>About Us</Link>
+                            <Link to="about">About Us</Link>
                           </span>
                         </li>
                         <li>
                           <span>
-                            <Link>Author</Link>
+                            <Link to="author">Author</Link>
                           </span>
                         </li>
                         <li>
                           <span>
-                            <Link>FAQ</Link>
+                            <Link to="faq">FAQ</Link>
                           </span>
                         </li>
                       </ul>
@@ -353,7 +353,7 @@ const Header = () => {
               <Link>Home</Link>
             </li>
             <li>
-              <Link>
+              <Link to="/categories">
                 <span
                   onClick={() => setCategoriesOpen(!categoriesOpen)}
                   aria-controls="example-collapse-text"
@@ -404,7 +404,9 @@ const Header = () => {
                 </Collapse>
               </Link>
             </li>
-            <li>Blog</li>
+            <li>
+              <Link to="blog">Blog</Link>
+            </li>
             <li>
               <Link>
                 <span

@@ -13,6 +13,7 @@ import Login from "./pages/Login/Login";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "react-toastify/dist/ReactToastify.css";
+import FrequentlyAskedQuestions from "./components/FAQ/FrequentlyAskedQuestions";
 function App() {
   return (
     <>
@@ -33,6 +34,7 @@ function App() {
             <Route path="author" element={<Author />} />
             <Route path="blog" element={<Blog />} />
             <Route path="login" element={<Login />} />
+            <Route path="faq" element={<FrequentlyAskedQuestions />} />
             {/* Page 404 */}
             <Route path="*" element={<Notfound />} />
             {/* Admin */}

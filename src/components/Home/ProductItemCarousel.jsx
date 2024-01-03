@@ -1,13 +1,12 @@
-import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { Button, Col, Container, Modal, Row } from "react-bootstrap";
+import { AnimatePresence, motion, useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { Col, Container, Modal, Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { FaRegEye } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import Offcanvas from "react-bootstrap/Offcanvas";
-import PreviewItem from "./PreViewItem/PreviewItem";
+import PreviewItem from "../PreViewItem/PreviewItem";
 
 const ProductItemCarousel = ({
   listItemBestSelling,
@@ -18,9 +17,10 @@ const ProductItemCarousel = ({
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [show, setShow] = useState(false);
   const [idItem, setIdItem] = useState("");
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   useEffect(() => {
     const handleResize = () => {
@@ -97,7 +97,14 @@ const ProductItemCarousel = ({
                 </nav>
               </Col>
             </Row>
-            <div className="carousel">
+            <motion.div
+              className="carousel"
+              ref={ref}
+              style={{
+                opacity: isInView ? 1 : 0,
+                transition: "1.5s opacity",
+              }}
+            >
               <motion.div
                 className={`carousel-bestselling carousel-card ${
                   activeElem === 0 ? "active" : ""
@@ -421,18 +428,9 @@ const ProductItemCarousel = ({
                     })}
                 </Row>
               </motion.div>
-            </div>
+            </motion.div>
           </Container>
         </section>
-        {/* <Offcanvas
-          className={show ? "offcanvas-show" : "offcanvas-hide"}
-          show={show}
-          onHide={handleClose}
-        >
-          <Offcanvas.Body>
-            <PreviewItem setShow={setShow} idItem={idItem} />
-          </Offcanvas.Body>
-        </Offcanvas> */}
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Preview Book</Modal.Title>
