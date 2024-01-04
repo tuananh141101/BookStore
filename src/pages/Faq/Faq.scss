@@ -60,6 +60,8 @@
                             font-family: "Victormono";
                             font-weight: bold;
                             font-size: $fontSize-Light;
+                            outline: none;
+                            box-shadow: none;
 
                             &:not(.collapsed) {
                                 color: $Color-1 !important;
@@ -70,6 +72,8 @@
 
 
                     .accordion-body {
+                        border: none;
+
                         form {
                             width: 100%;
                         }

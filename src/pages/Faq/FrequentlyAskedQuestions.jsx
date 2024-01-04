@@ -39,7 +39,7 @@ const FrequentlyAskedQuestions = () => {
               >
                 <p className="mb-0">Shopping</p>
                 <div style={{ width: "100%" }}>
-                  <Accordion>
+                  <Accordion defaultActiveKey={["0"]} alwaysOpen>
                     <Accordion.Item eventKey="0">
                       <Accordion.Header>
                         Delivery charges for order from the Online Shop?
@@ -97,7 +97,7 @@ const FrequentlyAskedQuestions = () => {
               >
                 <p className="mb-0">Payment</p>
                 <div style={{ width: "100%" }}>
-                  <Accordion>
+                  <Accordion defaultActiveKey={["0"]} alwaysOpen>
                     <Accordion.Item eventKey="0">
                       <Accordion.Header>
                         Delivery charges for order from the Online Shop?
