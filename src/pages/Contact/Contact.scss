@@ -1,5 +1,25 @@
 @import '../../assets/styles/common';
 
+
+.bread-crumb {
+    background-color: rgb(246, 245, 243, .6);
+
+    .custom-breadcrumb>.breadcrumb {
+        margin: 0;
+        padding: 8px 0;
+    }
+
+    .custom-breadcrumb-item {
+        a {
+            font-size: $fontSize-Light;
+        }
+    }
+
+    .custom-breadcrumb-item.active {
+        text-decoration: underline;
+    }
+}
+
 .contact {
     .container>.row {
         padding-top: 48px;

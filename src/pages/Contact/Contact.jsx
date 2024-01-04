@@ -1,4 +1,4 @@
-import { Col, Container, Row } from "react-bootstrap";
+import { Breadcrumb, Col, Container, Row } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import "./Contact.scss";
 
@@ -6,6 +6,22 @@ const Contact = () => {
   return (
     <>
       <div>
+        <section className="bread-crumb">
+          <Container>
+            <Row>
+              <Col>
+                <Breadcrumb className="custom-breadcrumb">
+                  <Breadcrumb.Item className="custom-breadcrumb-item" href="/">
+                    Home
+                  </Breadcrumb.Item>
+                  <Breadcrumb.Item className="custom-breadcrumb-item" active>
+                    Blog
+                  </Breadcrumb.Item>
+                </Breadcrumb>
+              </Col>
+            </Row>
+          </Container>
+        </section>
         <section className="contact">
           <Container>
             <Row>
