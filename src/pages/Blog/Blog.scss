@@ -179,6 +179,10 @@
                         object-fit: cover;
                     }
 
+                    iframe {
+                        border-radius: 3px;
+                    }
+
                     .type {
                         position: absolute;
                         top: 5%;
@@ -239,6 +243,35 @@
 
                 .custom-col {
                     padding-bottom: 24px;
+                }
+
+                @media screen and (max-width: $breakpointMedium) {
+                    .product-post>.custom-col {
+                        flex-direction: column;
+                        margin: 18px 0;
+
+                        &:first-child {
+                            margin-top: 48px;
+                        }
+
+                        .post-thumbnail>img {
+                            width: 100%;
+                        }
+
+                        .post-thumbnail>iframe {
+                            width: 100%;
+                        }
+
+                        .post-detail {
+                            padding-left: 0;
+
+                            ul>li {
+                                &:first-child {
+                                    padding-top: 16px;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }

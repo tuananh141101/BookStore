@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { IoNewspaperOutline } from "react-icons/io5";
 import { IoVideocamOutline } from "react-icons/io5";
 import { IoMdImages } from "react-icons/io";
-import { IoIosLink } from "react-icons/io";
 
 const Post = () => {
   return (
@@ -132,6 +131,70 @@ const Post = () => {
                 </li>
                 <li className="mb-0">
                   <Link>news,opinion</Link>
+                </li>
+              </ul>
+            </div>
+          </Col>
+          <Col sm={12} className="custom-col d-flex">
+            <div className="post-thumbnail">
+              <iframe
+                width="339"
+                height="254.50"
+                src="https://www.youtube.com/embed/ORjtrEW8whg?si=qUrRLkOkam8ABNpw"
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+              <div className="type">
+                <IoVideocamOutline />
+              </div>
+            </div>
+            <div className="post-detail">
+              <ul className="mb-0">
+                <li className="mb-0">
+                  <Link>Books with Horrible Dating Advice</Link>
+                </li>
+                <li className="mb-0">
+                  <Link>
+                    When I was single, I hated dating—which is probably why I
+                    didn't do much of it. There are so many unspoken rules, and
+                    girls play games, and it's enough to make you…
+                  </Link>
+                </li>
+                <li className="mb-0">
+                  <Link>DEC 22, 2023</Link>
+                </li>
+                <li className="mb-0">
+                  <Link>news,opinion</Link>
+                </li>
+              </ul>
+            </div>
+          </Col>
+          <Col sm={12} className="custom-col d-flex">
+            <div className="post-thumbnail">
+              <img src="https://demo.kaliumtheme.com/bookstore/wp-content/uploads/2019/04/Brewery-Bhavana-1482x635.jpg" />
+              <div className="type">
+                <IoMdImages />
+              </div>
+            </div>
+            <div className="post-detail">
+              <ul className="mb-0">
+                <li className="mb-0">
+                  <Link>A New Restaurant & Bookshop Opens in Raleigh</Link>
+                </li>
+                <li className="mb-0">
+                  <Link>
+                    Brewery Bhavana, a restaurant in downtown Raleigh offering
+                    craft beer and dim sum, plus a flower shop and bookstore,
+                    opened last Wednesday, the News & Observer reported, noting
+                    that the bookshop and floral shop inside…
+                  </Link>
+                </li>
+                <li className="mb-0">
+                  <Link>MARCH 15, 2023</Link>
+                </li>
+                <li className="mb-0">
+                  <Link>news</Link>
                 </li>
               </ul>
             </div>
