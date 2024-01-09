@@ -43,6 +43,8 @@
         }
 
         .row:last-child {
+            padding-bottom: 68px;
+
             .custom_col_cate {
                 font-size: 28px;
 
@@ -365,84 +367,158 @@
     }
 }
 
-.author-carousel {
-    background-color: aqua;
+.author-month {
+    background-color: $backGround-input;
 
-    .container {
-        .row:first-child {
-            padding-bottom: 16px;
+    .container>.row {
+        padding: 48px 0;
 
-            .custom-col:nth-child(1) {
-                p {
-                    font-size: 24px;
-                    font-weight: bold;
-                    font-family: 'Victormono';
+        .custom-col {
+            &:first-child {
+                .title {
+                    span {
+                        color: $Color-1;
+                        font-size: $fontSize-Light;
+                        text-transform: uppercase;
+                        letter-spacing: 2px;
+                        padding-bottom: 8px;
+                    }
+
+                    p {
+                        font-size: 24px;
+                        font-family: 'Victormono';
+                        font-weight: bold;
+                    }
                 }
 
-                span {
-                    color: $Color-2;
-                    opacity: .9;
-                    letter-spacing: 1px;
-                }
-            }
-
-            .custom-col:nth-child(2) {
-                span {
-                    text-decoration: underline;
-                    cursor: pointer;
-                }
-            }
-
-            @media screen and (max-width: $breakpointSmall) {
-                .custom-col:nth-child(1) {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    flex-direction: column;
+                .about {
+                    padding: 28px 0;
+                    width: 800px;
                 }
 
-                .custom-col:nth-child(2) {
-                    justify-content: center !important;
-                }
-            }
-        }
+                .product {
+                    .card {
+                        border-radius: 6px;
 
-        .row:last-child {
-            padding-bottom: 80px;
-            padding-top: 16px;
+                        img {
+                            height: 413.33px;
+                        }
 
-            .slick-slide {
-                cursor: pointer;
+                        .card-img-top {
+                            border-top-left-radius: 3px;
+                            border-top-right-radius: 3px;
+                        }
 
-                img {
-                    width: 130px;
-                    height: 130px;
-                }
+                        .card-body {
+                            .card-text {
+                                margin-bottom: 8px;
+                                color: #f75454;
+                                font-size: 14px;
+                                text-transform: uppercase;
+                            }
 
-                p {
-                    margin-top: 8px;
-                    font-size: $fontSize-Medium;
-                    color: $Color-1;
-                    font-weight: bold;
-                }
+                            .card-title {
+                                font-size: 18px;
+                            }
 
-                span {
-                    font-size: $fontSize-Light;
-                    color: $Color-2;
-                    opacity: .9;
-                }
-            }
+                            p {
+                                a {
+                                    font-size: 14px;
+                                    color: #7c6e65;
+                                }
+                            }
+                        }
 
-            .slick-dots {
-                bottom: -35px;
+                        .card-price {
+                            padding: 1rem;
 
-                li>button::before {
-                    font-size: $fontSize-Extra_Light;
-                    color: $Color-2;
-                }
+                            ul {
+                                padding-left: 0;
 
-                li.slick-active>button::before {
-                    color: $Color-2;
+                                li {
+                                    &:first-child {
+                                        font-size: 18px;
+                                        color: $Color-2;
+                                        font-weight: bold;
+                                    }
+
+                                    &:last-child {
+                                        div {
+                                            background-color: $backGround-input;
+                                            border: none;
+                                            padding: 8px 12px;
+                                            border-radius: 3px;
+                                            cursor: pointer;
+
+                                            svg {
+                                                width: 18px;
+                                                height: 18px;
+                                            }
+
+                                            &:hover {
+                                                svg {
+                                                    fill: white;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        .img {
+                            position: relative;
+
+                            .btn-icon {
+                                position: absolute;
+                                background-color: $backGround-input;
+                                border: none;
+                                padding: 8px 12px;
+                                border-radius: 3px;
+                                opacity: 0;
+                                pointer-events: none;
+                                transition: opacity .2s ease-in-out;
+
+                                svg {
+                                    width: 20px;
+                                    height: 18px;
+                                }
+
+                                &:hover {
+                                    svg {
+                                        fill: white;
+                                    }
+                                }
+                            }
+
+                            .quick-view {
+                                top: 50%;
+                                left: 35%;
+                                transform: translate(-35, -50);
+                                cursor: pointer;
+                            }
+
+                            .add-fav-book {
+                                top: 50%;
+                                left: 55%;
+                                transform: translate(-55, -50);
+                                cursor: pointer;
+                            }
+
+                            &:hover {
+                                .btn-icon {
+                                    opacity: 1;
+                                    pointer-events: initial;
+                                    transition: opacity .2s ease-in-out;
+                                }
+                            }
+
+                        }
+                    }
+
+                    .card:nth-child(2) {
+                        margin-left: 32px;
+                    }
                 }
             }
         }
@@ -450,7 +526,7 @@
 }
 
 .selected-book {
-    margin-top: 48px;
+    margin-top: 68px;
     padding-top: 48px;
     padding-bottom: 48px;
     background-image: url('../../assets/images/beatriz-perez-moya-XN4T2PVUUgk-unsplash\ 1.jpg');
@@ -665,7 +741,7 @@
 .product-blog {
     .container {
         .row:first-child {
-            padding-top: 48px;
+            padding-top: 68px;
             padding-bottom: 16px;
 
             .custom-col:first-child {
@@ -694,7 +770,7 @@
         }
 
         .row:last-child {
-            padding-bottom: 48px;
+            padding-bottom: 68px;
             padding-top: 16px;
 
             .custom-col {

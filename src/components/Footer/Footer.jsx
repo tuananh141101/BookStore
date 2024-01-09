@@ -80,16 +80,16 @@ const Footer = () => {
                 <div>
                   <ul>
                     <li>
-                      <Link>About Us</Link>
+                      <Link to="/">About Us</Link>
                     </li>
                     <li>
-                      <Link>Site Map</Link>
+                      <Link to="/">Site Map</Link>
                     </li>
                     <li>
-                      <Link>Bookmarks</Link>
+                      <Link to="/">Bookmarks</Link>
                     </li>
                     <li>
-                      <Link>Sign In/Join</Link>
+                      <Link to="/">Sign In/Join</Link>
                     </li>
                   </ul>
                 </div>
@@ -99,16 +99,16 @@ const Footer = () => {
                 <div>
                   <ul>
                     <li>
-                      <Link>Help Center</Link>
+                      <Link to="/">Help Center</Link>
                     </li>
                     <li>
-                      <Link>Return</Link>
+                      <Link to="/">Return</Link>
                     </li>
                     <li>
-                      <Link>Product Recalls</Link>
+                      <Link to="/">Product Recalls</Link>
                     </li>
                     <li>
-                      <Link>Store Pickup</Link>
+                      <Link to="/">Store Pickup</Link>
                     </li>
                   </ul>
                 </div>
@@ -118,10 +118,10 @@ const Footer = () => {
                 <div>
                   <ul>
                     <li>
-                      <Link>Return Policy</Link>
+                      <Link to="/">Return Policy</Link>
                     </li>
                     <li>
-                      <Link>Term Of Use</Link>
+                      <Link to="/">Term Of Use</Link>
                     </li>
                   </ul>
                 </div>
@@ -131,19 +131,19 @@ const Footer = () => {
                 <div>
                   <ul>
                     <li>
-                      <Link>Aciton</Link>
+                      <Link to="/">Aciton</Link>
                     </li>
                     <li>
-                      <Link>Cooking</Link>
+                      <Link to="/">Cooking</Link>
                     </li>
                     <li>
-                      <Link>Family</Link>
+                      <Link to="/">Family</Link>
                     </li>
                     <li>
-                      <Link>Drama</Link>
+                      <Link to="/">Drama</Link>
                     </li>
                     <li>
-                      <Link>Other</Link>
+                      <Link to="/">Other</Link>
                     </li>
                   </ul>
                 </div>

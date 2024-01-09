@@ -43,6 +43,7 @@ const Home = () => {
     <>
       <BannerSlide />
       <ProductCategories />
+      <AuthorCarousel dataItem={dataItem} />
       <ProductItemCarousel
         listItemSale={listItemSale}
         listItemBestSelling={listItemBestSelling}
@@ -51,7 +52,6 @@ const Home = () => {
       />
       <SelectedBook />
       <ProductBlog />
-      <AuthorCarousel dataItem={dataItem} />
     </>
   );
 };

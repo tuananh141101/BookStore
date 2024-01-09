@@ -2,7 +2,7 @@ import { Col, Container, Row, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
 import { FaLinkSlash } from "react-icons/fa6";
-import { easeInOut, motion, useInView } from "framer-motion";
+import { useInView } from "framer-motion";
 import { useRef } from "react";
 
 const ProductBlog = () => {
