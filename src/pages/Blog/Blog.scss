@@ -49,6 +49,8 @@
                     width: 100%;
 
                     .accordion-item {
+                        width: 100%;
+
                         &:first-of-type {
                             border-top-left-radius: 3px !important;
                             border-top-right-radius: 3px !important;
@@ -75,6 +77,8 @@
                             font-family: "Victormono";
                             font-weight: bold;
                             font-size: $fontSize-Light;
+                            outline: none;
+                            box-shadow: none;
 
                             &:not(.collapsed) {
                                 color: $Color-1 !important;
@@ -85,6 +89,8 @@
 
 
                     .accordion-body {
+                        border: none;
+
                         form {
                             width: 100%;
                         }

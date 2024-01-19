@@ -10,11 +10,14 @@ const FrequentlyAskedQuestions = () => {
             <Row>
               <Col>
                 <Breadcrumb className="custom-breadcrumb">
-                  <Breadcrumb.Item className="custom-breadcrumb-item" href="/">
+                  <Breadcrumb.Item
+                    className="custom-breadcrumb-item d-flex align-items-center"
+                    href="/"
+                  >
                     Home
                   </Breadcrumb.Item>
                   <Breadcrumb.Item
-                    className="custom-breadcrumb-item"
+                    className="custom-breadcrumb-item d-flex align-items-center"
                     href="blog"
                     active
                   >
@@ -25,6 +28,7 @@ const FrequentlyAskedQuestions = () => {
             </Row>
           </Container>
         </section>
+
         <section className="faq">
           <Container>
             <Row>

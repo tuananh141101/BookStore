@@ -11,11 +11,17 @@ const Contact = () => {
             <Row>
               <Col>
                 <Breadcrumb className="custom-breadcrumb">
-                  <Breadcrumb.Item className="custom-breadcrumb-item" href="/">
+                  <Breadcrumb.Item
+                    className="custom-breadcrumb-item d-flex align-items--center"
+                    href="/"
+                  >
                     Home
                   </Breadcrumb.Item>
-                  <Breadcrumb.Item className="custom-breadcrumb-item" active>
-                    Blog
+                  <Breadcrumb.Item
+                    className="custom-breadcrumb-item d-flex align-items-center"
+                    active
+                  >
+                    Contact
                   </Breadcrumb.Item>
                 </Breadcrumb>
               </Col>

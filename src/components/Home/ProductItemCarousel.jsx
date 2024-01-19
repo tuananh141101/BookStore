@@ -195,7 +195,7 @@ const ProductItemCarousel = ({
                                       y: 0,
                                     }}
                                     transition={{
-                                      duration: 0.4,
+                                      duration: 0.2,
                                       ease: "easeInOut",
                                     }}
                                   >
@@ -302,7 +302,7 @@ const ProductItemCarousel = ({
                                       y: 0,
                                     }}
                                     transition={{
-                                      duration: 0.4,
+                                      duration: 0.2,
                                       ease: "easeInOut",
                                     }}
                                   >
@@ -411,7 +411,7 @@ const ProductItemCarousel = ({
                                       y: 0,
                                     }}
                                     transition={{
-                                      duration: 0.4,
+                                      duration: 0.2,
                                       ease: "easeInOut",
                                     }}
                                   >

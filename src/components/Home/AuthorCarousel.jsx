@@ -21,7 +21,7 @@ const AuthorCarousel = ({ dataItem }) => {
     };
   }, []);
 
-  let danielle = dataItem.filter((item) => item.author === "Danielle Steel");
+  // let danielle = dataItem.filter((item) => item.author === "Danielle Steel");
 
   const btnIconAnimation = {
     hidden: {

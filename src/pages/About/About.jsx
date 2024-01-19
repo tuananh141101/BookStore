@@ -14,7 +14,7 @@ const About = () => {
                     Home
                   </Breadcrumb.Item>
                   <Breadcrumb.Item
-                    className="custom-breadcrumb-item"
+                    className="custom-breadcrumb-item d-flex align-items-center"
                     href="blog"
                     active
                   >
@@ -30,6 +30,7 @@ const About = () => {
           <img
             src="https://demo.kaliumtheme.com/bookstore/wp-content/uploads/2019/04/open-house-central-embassy-klein-dytham-architecture_dezeen_2364_col_2-1612x1075.jpg"
             alt=""
+            style={{ width: "100%" }}
           />
         </div>
 
