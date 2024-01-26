@@ -294,7 +294,7 @@ const Header = () => {
                               isFocused ? "focused-icon" : ""
                             }`}
                             placeholder="Search | Ctrl K"
-                            id="your-search-input-id"
+                            id="your-search-input-id2"
                           />
                         </form>
                       </div>
@@ -329,7 +329,7 @@ const Header = () => {
                     type="text"
                     className="input-search"
                     placeholder="Search by Keywords"
-                    id="your-search-input-id"
+                    id="your-search-input-id1"
                   />
                 </form>
               </Col>

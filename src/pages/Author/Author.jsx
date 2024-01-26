@@ -6,6 +6,36 @@ import { useEffect, useState } from "react";
 const Author = () => {
   const [author, setAuthor] = useState([]);
   const [product, setProduct] = useState([]);
+  const alphabet = [
+    "All",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
+  ];
+  const [selectedLetter, setSelectedLetter] = useState("All");
 
   const getAuthor = async () => {
     try {
@@ -41,7 +71,10 @@ const Author = () => {
     getAuthor();
   }, []);
 
-  console.log(author);
+  const handleLetterClick = (e) => {
+    console.log(e.target.outerText);
+    setSelectedLetter(e.target.outerText);
+  };
 
   return (
     <>
@@ -72,12 +105,23 @@ const Author = () => {
         <section className="author">
           <Container>
             <Row>
-              <ul className="mb-0 author-filter d-flex align-items-center">
-                <li>All</li>
-                <li>A</li>
-                <li>B</li>
-                <li>C</li>
-                <li>D</li>
+              <ul className="mb-0 author-filter d-flex align-items-center justify-content-between">
+                {alphabet.map((letter, index) => {
+                  return (
+                    <>
+                      <li
+                        key={index}
+                        onClick={handleLetterClick}
+                        style={{
+                          textDecoration:
+                            selectedLetter === letter ? "underline" : "",
+                        }}
+                      >
+                        {letter}
+                      </li>
+                    </>
+                  );
+                })}
               </ul>
               <Col>hello</Col>
             </Row>

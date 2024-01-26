@@ -25,7 +25,7 @@ const Home = () => {
         .filter((item) => {
           return item.sale === true;
         })
-        .sort(() => Math.random() - 0.5)
+        // .sort(() => Math.random() - 0.5)
         .slice(0, 8);
       setListItemBestSelling(resBestSelling);
       setListItemLatest(resLatest);

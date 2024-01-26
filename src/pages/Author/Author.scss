@@ -3,5 +3,19 @@
 .author {
     .container .row {
         padding: 48px 0;
+
+        .author-filter {
+            width: 100%;
+
+            li {
+                cursor: pointer;
+                font-family: 'Victormono';
+
+                &:first-child {
+                    padding-left: 0;
+                }
+            }
+
+        }
     }
 }
