@@ -1,4 +1,4 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import { Col, Container, Modal, Row } from "react-bootstrap";
 import { useEffect, useState } from "react";

@@ -43,6 +43,7 @@ const Blog = () => {
                 </span>
               </Col>
             </Row>
+
             <Row>
               <Col
                 className="custom-col sidebar d-flex justify-content-start"

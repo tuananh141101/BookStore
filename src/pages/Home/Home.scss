@@ -368,157 +368,177 @@
 }
 
 .author-month {
-    background-color: $backGround-input;
+    background-color: #F6F5F3;
 
     .container>.row {
-        padding: 48px 0;
-
         .custom-col {
-            &:first-child {
-                .title {
-                    span {
-                        color: $Color-1;
-                        font-size: $fontSize-Light;
-                        text-transform: uppercase;
-                        letter-spacing: 2px;
-                        padding-bottom: 8px;
-                    }
+            border-radius: 4px;
+            padding: 48px 0;
 
-                    p {
-                        font-size: 24px;
-                        font-family: 'Victormono';
-                        font-weight: bold;
+            .title {
+                span {
+                    color: $Color-1;
+                    font-size: $fontSize-Light;
+                    text-transform: uppercase;
+                    letter-spacing: 2px;
+                    padding-bottom: 8px;
+                }
+
+                p {
+                    font-size: 24px;
+                    font-family: 'Victormono';
+                    font-weight: bold;
+                }
+            }
+
+            .about {
+                padding: 28px 0;
+                width: 800px;
+
+                @media screen and (max-width: $breakpointMedium) {
+                    width: 100%;
+                }
+            }
+
+            .product {
+                @media screen and (max-width: $breakpointSmall) {
+                    justify-content: center;
+                    flex-direction: column;
+                    width: 100%;
+
+                    .card:nth-child(2) {
+                        margin-left: 0px !important;
+                        margin-top: 16px;
                     }
                 }
 
-                .about {
-                    padding: 28px 0;
-                    width: 800px;
-                }
+                .card {
+                    border-radius: 6px;
+                    width: 100%;
 
-                .product {
-                    .card {
-                        border-radius: 6px;
+                    img {
+                        height: 413.33px;
 
-                        img {
-                            height: 413.33px;
+                        @media screen and (max-width: $breakpointSmall) {
+                            height: 725.33px;
+                        }
+                    }
+
+                    .card-img-top {
+                        border-top-left-radius: 3px;
+                        border-top-right-radius: 3px;
+                        object-fit: fill;
+                    }
+
+                    .card-body {
+                        .card-text {
+                            margin-bottom: 8px;
+                            color: #f75454;
+                            font-size: 14px;
+                            text-transform: uppercase;
                         }
 
-                        .card-img-top {
-                            border-top-left-radius: 3px;
-                            border-top-right-radius: 3px;
+                        .card-title {
+                            font-size: 18px;
                         }
 
-                        .card-body {
-                            .card-text {
-                                margin-bottom: 8px;
-                                color: #f75454;
+                        p {
+                            a {
                                 font-size: 14px;
-                                text-transform: uppercase;
-                            }
-
-                            .card-title {
-                                font-size: 18px;
-                            }
-
-                            p {
-                                a {
-                                    font-size: 14px;
-                                    color: #7c6e65;
-                                }
+                                color: #7c6e65;
                             }
                         }
+                    }
 
-                        .card-price {
-                            padding: 1rem;
+                    .card-price {
+                        padding: 1rem;
 
-                            ul {
-                                padding-left: 0;
+                        ul {
+                            padding-left: 0;
 
-                                li {
-                                    &:first-child {
-                                        font-size: 18px;
-                                        color: $Color-2;
-                                        font-weight: bold;
-                                    }
+                            li {
+                                &:first-child {
+                                    font-size: 18px;
+                                    color: $Color-2;
+                                    font-weight: bold;
+                                }
 
-                                    &:last-child {
-                                        div {
-                                            background-color: $backGround-input;
-                                            border: none;
-                                            padding: 8px 12px;
-                                            border-radius: 3px;
-                                            cursor: pointer;
+                                &:last-child {
+                                    div {
+                                        background-color: $backGround-input;
+                                        border: none;
+                                        padding: 8px 12px;
+                                        border-radius: 3px;
+                                        cursor: pointer;
 
+                                        svg {
+                                            width: 18px;
+                                            height: 18px;
+                                        }
+
+                                        &:hover {
                                             svg {
-                                                width: 18px;
-                                                height: 18px;
-                                            }
-
-                                            &:hover {
-                                                svg {
-                                                    fill: white;
-                                                }
+                                                fill: white;
                                             }
                                         }
                                     }
                                 }
                             }
                         }
+                    }
 
-                        .img {
-                            position: relative;
+                    .img {
+                        position: relative;
 
-                            .btn-icon {
-                                position: absolute;
-                                background-color: $backGround-input;
-                                border: none;
-                                padding: 8px 12px;
-                                border-radius: 3px;
-                                opacity: 0;
-                                pointer-events: none;
-                                transition: opacity .2s ease-in-out;
+                        .btn-icon {
+                            position: absolute;
+                            background-color: $backGround-input;
+                            border: none;
+                            padding: 8px 12px;
+                            border-radius: 3px;
+                            opacity: 0;
+                            pointer-events: none;
+                            transition: opacity .2s ease-in-out;
 
-                                svg {
-                                    width: 20px;
-                                    height: 18px;
-                                }
-
-                                &:hover {
-                                    svg {
-                                        fill: white;
-                                    }
-                                }
-                            }
-
-                            .quick-view {
-                                top: 50%;
-                                left: 35%;
-                                transform: translate(-35, -50);
-                                cursor: pointer;
-                            }
-
-                            .add-fav-book {
-                                top: 50%;
-                                left: 55%;
-                                transform: translate(-55, -50);
-                                cursor: pointer;
+                            svg {
+                                width: 20px;
+                                height: 18px;
                             }
 
                             &:hover {
-                                .btn-icon {
-                                    opacity: 1;
-                                    pointer-events: initial;
-                                    transition: opacity .2s ease-in-out;
+                                svg {
+                                    fill: white;
                                 }
                             }
-
                         }
-                    }
 
-                    .card:nth-child(2) {
-                        margin-left: 32px;
+                        .quick-view {
+                            top: 50%;
+                            left: 35%;
+                            transform: translate(-35, -50);
+                            cursor: pointer;
+                        }
+
+                        .add-fav-book {
+                            top: 50%;
+                            left: 55%;
+                            transform: translate(-55, -50);
+                            cursor: pointer;
+                        }
+
+                        &:hover {
+                            .btn-icon {
+                                opacity: 1;
+                                pointer-events: initial;
+                                transition: opacity .2s ease-in-out;
+                            }
+                        }
+
                     }
+                }
+
+                .card:nth-child(2) {
+                    margin-left: 32px;
                 }
             }
         }

@@ -7,19 +7,24 @@ import { FaRegEye } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import PreviewItem from "../PreViewItem/PreviewItem";
+import { useSelector } from "react-redux";
 
-const ProductItemCarousel = ({
-  listItemBestSelling,
-  listItemLatest,
-  listItemSale,
-}) => {
+const ProductItemCarousel = () => {
   const [activeElem, setActiveElem] = useState(0);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [show, setShow] = useState(false);
   const [idItem, setIdItem] = useState("");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
-
+  const listProductsBestSelling = useSelector(
+    (state) => state.products.listProductsBestSelling
+  );
+  const listProductsSale = useSelector(
+    (state) => state.products.listProductsSale
+  );
+  const listProductsLatest = useSelector(
+    (state) => state.products.listProductsLatest
+  );
   const handleClose = () => setShow(false);
 
   useEffect(() => {
@@ -124,8 +129,8 @@ const ProductItemCarousel = ({
                 exit={{ opacity: 0, y: 30 }}
               >
                 <Row>
-                  {listItemLatest &&
-                    listItemLatest.map((item, index) => {
+                  {listProductsLatest &&
+                    listProductsLatest.map((item, index) => {
                       return (
                         <Col
                           className="custom-col mb-4"
@@ -231,8 +236,8 @@ const ProductItemCarousel = ({
                 exit={{ opacity: 0, y: 30 }}
               >
                 <Row>
-                  {listItemBestSelling &&
-                    listItemBestSelling.map((item, index) => {
+                  {listProductsBestSelling &&
+                    listProductsBestSelling.map((item, index) => {
                       return (
                         <Col
                           className="custom-col mb-4"
@@ -338,8 +343,8 @@ const ProductItemCarousel = ({
                 exit={{ opacity: 0, y: 30 }}
               >
                 <Row>
-                  {listItemSale &&
-                    listItemSale.map((item, index) => {
+                  {listProductsSale &&
+                    listProductsSale.map((item, index) => {
                       return (
                         <Col
                           className="custom-col mb-4"

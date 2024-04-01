@@ -1,55 +1,35 @@
 import "./Home.scss";
-import { useEffect, useState } from "react";
-import { dataProducts } from "../../services/UserServices";
+import { useEffect } from "react";
 import BannerSlide from "../../components/Banner-Slide/BannerSlide";
 import ProductCategories from "../../components/Home/ProductCategories";
 import ProductItemCarousel from "../../components/Home/ProductItemCarousel";
 import AuthorCarousel from "../../components/Home/AuthorCarousel";
 import SelectedBook from "../../components/Home/SelectedBook";
 import ProductBlog from "../../components/Home/ProductBlog";
+import { useDispatch } from "react-redux";
+import {
+  fetchProducts,
+  fetchProductsBestSelling,
+  fetchProductsLatest,
+  fetchProductsSale,
+} from "../../Store/api/products";
 
 const Home = () => {
-  const [listItemBestSelling, setListItemBestSelling] = useState([]);
-  const [listItemLatest, setListItemLatest] = useState([]);
-  const [listItemSale, setListItemSale] = useState([]);
-  const [dataItem, setDataItem] = useState([]);
+  const dispatch = useDispatch();
 
-  const getUsers = async () => {
-    try {
-      let res = await dataProducts();
-      let resBestSelling = [...res.data]
-        .sort(() => Math.random() - 0.5)
-        .slice(0, 8);
-      let resLatest = [...res.data].sort(() => Math.random() - 0.5).slice(0, 8);
-      let resSale = [...res.data]
-        .filter((item) => {
-          return item.sale === true;
-        })
-        // .sort(() => Math.random() - 0.5)
-        .slice(0, 8);
-      setListItemBestSelling(resBestSelling);
-      setListItemLatest(resLatest);
-      setListItemSale(resSale);
-      setDataItem(res.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
   useEffect(() => {
-    getUsers();
+    dispatch(fetchProducts());
+    dispatch(fetchProductsBestSelling());
+    dispatch(fetchProductsLatest());
+    dispatch(fetchProductsSale());
   }, []);
 
   return (
     <>
       <BannerSlide />
       <ProductCategories />
-      <AuthorCarousel dataItem={dataItem} />
-      <ProductItemCarousel
-        listItemSale={listItemSale}
-        listItemBestSelling={listItemBestSelling}
-        listItemLatest={listItemLatest}
-        dataItem={dataItem}
-      />
+      <AuthorCarousel />
+      <ProductItemCarousel />
       <SelectedBook />
       <ProductBlog />
     </>

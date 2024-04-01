@@ -164,12 +164,12 @@ const Header = () => {
                     <span>
                       <Link to="categories">
                         Categories
-                        <span>
+                        {/* <span>
                           <IoMdArrowDropdown />
-                        </span>
+                        </span> */}
                       </Link>
                     </span>
-                    <div className="dropdown-menuLi">
+                    {/* <div className="dropdown-menuLi">
                       <ul>
                         <li>
                           <span>
@@ -222,7 +222,7 @@ const Header = () => {
                           </span>
                         </li>
                       </ul>
-                    </div>
+                    </div> */}
                   </li>
                   <li className={isMobile ? "hidden" : ""}>
                     <Link to="blog">Blog</Link>
