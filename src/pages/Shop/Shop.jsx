@@ -1,10 +1,11 @@
 import { Breadcrumb, Col, Container, Row } from "react-bootstrap";
-import SidebarCategories from "../../components/Categories/SidebarCategories";
-import SideMainCategories from "../../components/Categories/SideMainCategories";
-import "./Categories.scss";
+import "./Shop.scss";
 import { useDispatch, useSelector } from "react-redux";
+import SidebarShop from "../../components/Shop/SidebarShop";
+import SideMainShop from "../../components/Shop/SideMainShop";
+import { Link } from "react-router-dom";
 
-const Categories = () => {
+const Shop = () => {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.products.listProducts);
   return (
@@ -23,7 +24,7 @@ const Categories = () => {
                     href="blog"
                     active
                   >
-                    Categories
+                    <Link>Shop</Link>
                   </Breadcrumb.Item>
                 </Breadcrumb>
               </Col>
@@ -35,16 +36,16 @@ const Categories = () => {
           <Container>
             <Row>
               <Col>
-                <p className="mb-0">Categories</p>
+                <p className="mb-0">Shop</p>
                 <span>Showing 1–12 of 43 results</span>
               </Col>
             </Row>
             <Row>
               <Col className="custom-col side-bar" lg={3}>
-                <SidebarCategories />
+                <SidebarShop />
               </Col>
               <Col className="custom-col side-main" lg={9}>
-                <SideMainCategories />
+                <SideMainShop />
               </Col>
             </Row>
           </Container>
@@ -54,4 +55,4 @@ const Categories = () => {
   );
 };
 
-export default Categories;
+export default Shop;

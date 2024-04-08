@@ -162,67 +162,8 @@ const Header = () => {
                   </li>
                   <li className={isMobile ? "hidden" : ""}>
                     <span>
-                      <Link to="categories">
-                        Categories
-                        {/* <span>
-                          <IoMdArrowDropdown />
-                        </span> */}
-                      </Link>
+                      <Link to="shop">Shop</Link>
                     </span>
-                    {/* <div className="dropdown-menuLi">
-                      <ul>
-                        <li>
-                          <span>
-                            <Link>Biography</Link>
-                          </span>
-                        </li>
-                        <li>
-                          <span>
-                            <Link>Cooking</Link>
-                          </span>
-                        </li>
-                        <li>
-                          <span>
-                            <Link>Drama</Link>
-                          </span>
-                        </li>
-                        <li>
-                          <span>
-                            <Link>Family</Link>
-                          </span>
-                        </li>
-                        <li>
-                          <span>
-                            <Link>Fiction</Link>
-                          </span>
-                        </li>
-                        <li>
-                          <span>
-                            <Link>History</Link>
-                          </span>
-                        </li>
-                        <li>
-                          <span>
-                            <Link>Mystery</Link>
-                          </span>
-                        </li>
-                        <li>
-                          <span>
-                            <Link>Politics</Link>
-                          </span>
-                        </li>
-                        <li>
-                          <span>
-                            <Link>Uncategorized</Link>
-                          </span>
-                        </li>
-                        <li>
-                          <span>
-                            <Link>Childrens</Link>
-                          </span>
-                        </li>
-                      </ul>
-                    </div> */}
                   </li>
                   <li className={isMobile ? "hidden" : ""}>
                     <Link to="blog">Blog</Link>

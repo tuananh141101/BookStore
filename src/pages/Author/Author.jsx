@@ -67,7 +67,6 @@ const Author = () => {
   };
 
   useEffect(() => {
-    console.log("useEff is called");
     getAuthor();
   }, []);
 

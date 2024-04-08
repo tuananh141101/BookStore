@@ -3,8 +3,8 @@ import Layout from "./pages/Layout";
 import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import Contact from "./pages/Contact/Contact";
-import Categories from "./pages/Categories/Categories";
-import DetaiItemProduct from "./components/Categories/DetaiItemProduct";
+import Shop from "./pages/Shop/Shop";
+import DetaiItemProduct from "./components/Shop/DetaiItemProduct";
 import Blog from "./pages/Blog/Blog";
 import Author from "./pages/Author/Author";
 import Notfound from "./pages/Notfound";
@@ -23,11 +23,8 @@ function App() {
             {/* Client */}
             <Route index element={<Home />} />
 
-            <Route path="categories" element={<Categories />} />
-            <Route
-              path="categories/products/:id"
-              element={<DetaiItemProduct />}
-            />
+            <Route path="shop" element={<Shop />} />
+            <Route path="shop/products/:id" element={<DetaiItemProduct />} />
 
             <Route path="contact" element={<Contact />} />
             <Route path="about" element={<About />} />

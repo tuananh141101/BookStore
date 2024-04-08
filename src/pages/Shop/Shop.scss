@@ -66,6 +66,48 @@
 
                         form {
                             width: 100%;
+
+                            input {
+                                padding: 8px;
+                                margin-bottom: 12px;
+                                width: 100%;
+                            }
+
+                            button {
+                                outline: none;
+                                border: none;
+                                background-color: #19110b;
+                                color: white;
+                                padding: 8px 16px;
+                                border-radius: 2px;
+                            }
+                        }
+
+                        ul {
+                            padding-left: 0;
+
+                            li {
+                                color: $Color-2;
+                                font-size: $fontSize-Medium;
+                                cursor: pointer;
+                                opacity: .6;
+                                padding-bottom: 8px;
+
+                                &:hover {
+                                    opacity: 1;
+                                    transition: 0.2s ease-in-out;
+                                }
+
+                            }
+
+                            li>label {
+                                display: flex;
+
+                                input {
+                                    margin-right: 8px;
+                                    width: 8%;
+                                }
+                            }
                         }
 
                         .icon-search {

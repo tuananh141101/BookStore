@@ -6,7 +6,7 @@ import ProductItemCarousel from "../../components/Home/ProductItemCarousel";
 import AuthorCarousel from "../../components/Home/AuthorCarousel";
 import SelectedBook from "../../components/Home/SelectedBook";
 import ProductBlog from "../../components/Home/ProductBlog";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   fetchProducts,
   fetchProductsBestSelling,
@@ -16,6 +16,12 @@ import {
 
 const Home = () => {
   const dispatch = useDispatch();
+  // const products = useSelector((state) => state.products.listProducts);
+  // const targetValue = "Fiction";
+  // const filterObject = products.filter((obj) =>
+  //   obj.categories.includes(targetValue)
+  // );
+  // console.log(">> target value = ", filterObject);
 
   useEffect(() => {
     dispatch(fetchProducts());
