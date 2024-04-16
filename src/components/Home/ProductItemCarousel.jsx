@@ -64,6 +64,7 @@ const ProductItemCarousel = () => {
       y: 0,
     },
   };
+
   return (
     <>
       <div>
@@ -143,7 +144,7 @@ const ProductItemCarousel = () => {
                         >
                           <Card style={{ width: "18rem" }} className="border">
                             <div className="img">
-                              <Link to={`categories/products/${item.id}`}>
+                              <Link to={`shop/products/${item.id}`}>
                                 <Card.Img
                                   variant="top"
                                   src={`https://websitebook-api.vercel.app${item.image}`}

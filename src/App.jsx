@@ -14,6 +14,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "react-toastify/dist/ReactToastify.css";
 import FrequentlyAskedQuestions from "./pages/Faq/FrequentlyAskedQuestions";
+import Cart from "./pages/Cart/Cart";
 function App() {
   return (
     <>
@@ -25,6 +26,7 @@ function App() {
 
             <Route path="shop" element={<Shop />} />
             <Route path="shop/products/:id" element={<DetaiItemProduct />} />
+            <Route path="cart" element={<Cart />} />
 
             <Route path="contact" element={<Contact />} />
             <Route path="about" element={<About />} />

@@ -1,13 +1,9 @@
 import { Breadcrumb, Col, Container, Row } from "react-bootstrap";
-import "./Shop.scss";
-import { useDispatch, useSelector } from "react-redux";
-import SidebarShop from "../../components/Shop/SidebarShop";
-import SideMainShop from "../../components/Shop/SideMainShop";
-import { Link } from "react-router-dom";
+import "./Cart.scss";
+import CartDetail from "../../components/Cart/CartDetail";
+import CartCheckout from "../../components/Cart/CartCheckout";
 
-const Shop = () => {
-  const dispatch = useDispatch();
-  const users = useSelector((state) => state.products.listProducts);
+const Cart = () => {
   return (
     <>
       <div>
@@ -24,7 +20,7 @@ const Shop = () => {
                     href="blog"
                     active
                   >
-                    <Link>Shop</Link>
+                    Cart
                   </Breadcrumb.Item>
                 </Breadcrumb>
               </Col>
@@ -32,20 +28,14 @@ const Shop = () => {
           </Container>
         </section>
 
-        <section className="categories">
+        <section className="cart">
           <Container>
             <Row>
-              <Col>
-                <p className="mb-0">Shop</p>
-                <span>Showing 1–12 of 31 results</span>
+              <Col className="custom-col" lg={9}>
+                <CartDetail />
               </Col>
-            </Row>
-            <Row>
-              <Col className="custom-col side-bar" lg={3}>
-                <SidebarShop />
-              </Col>
-              <Col className="custom-col side-main" lg={9}>
-                <SideMainShop />
+              <Col className="custom-col" lg={3}>
+                <CartCheckout />
               </Col>
             </Row>
           </Container>
@@ -55,4 +45,4 @@ const Shop = () => {
   );
 };
 
-export default Shop;
+export default Cart;

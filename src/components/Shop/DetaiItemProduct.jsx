@@ -129,9 +129,9 @@ const DetaiItemProduct = () => {
                   </Breadcrumb.Item>
                   <Breadcrumb.Item
                     className="custom-breadcrumb-item"
-                    href="/categories"
+                    href="/shop"
                   >
-                    Categories
+                    Shop
                   </Breadcrumb.Item>
                   <Breadcrumb.Item
                     className="custom-breadcrumb-item"
@@ -345,7 +345,7 @@ const DetaiItemProduct = () => {
                       <Card>
                         <div className="img">
                           <Link
-                            to={`/categories/products/${item.id}`}
+                            to={`/shop/products/${item.id}`}
                             onClick={() => window.scrollTo(0, 0)}
                           >
                             <Card.Img

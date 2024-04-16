@@ -203,7 +203,7 @@ const Header = () => {
                     </div>
                   </li>
                   <li className="cart-icon">
-                    <Link>
+                    <Link to="cart">
                       <FiShoppingCart className="icon" />
                     </Link>
                   </li>

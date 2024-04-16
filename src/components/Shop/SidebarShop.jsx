@@ -9,7 +9,7 @@ import {
   fetchProducts,
   updatemaxPrice,
   updateminPrice,
-} from "../../Store/api/categories";
+} from "../../Store/slice/categories";
 import { Form } from "react-bootstrap";
 
 const SidebarShop = () => {

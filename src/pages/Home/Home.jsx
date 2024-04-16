@@ -12,16 +12,10 @@ import {
   fetchProductsBestSelling,
   fetchProductsLatest,
   fetchProductsSale,
-} from "../../Store/api/products";
+} from "../../Store/slice/products";
 
 const Home = () => {
   const dispatch = useDispatch();
-  // const products = useSelector((state) => state.products.listProducts);
-  // const targetValue = "Fiction";
-  // const filterObject = products.filter((obj) =>
-  //   obj.categories.includes(targetValue)
-  // );
-  // console.log(">> target value = ", filterObject);
 
   useEffect(() => {
     dispatch(fetchProducts());

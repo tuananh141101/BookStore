@@ -58,7 +58,7 @@ const initialState = {
       categories: [],
       author: [],
       minPrice: 0,
-      maxPrice: 20,
+      maxPrice: 0,
     },
   ],
   filter: [],
@@ -85,15 +85,14 @@ export const categoriesSlice = createSlice({
           state.arr[0].categories.includes(category)
         );
 
-        const author = product.categories.some((category) =>
-          state.arr[0].categories.includes(category)
+        const toAuthorArr = [product.author];
+        const author = toAuthorArr.some((item) =>
+          state.arr[0].author.includes(item)
         );
 
         const price =
           product.price >= state.arr[0].minPrice &&
           product.price <= state.arr[0].maxPrice;
-
-        return categories && author && price;
       });
     },
     clearFilter(state, action) {
@@ -101,6 +100,7 @@ export const categoriesSlice = createSlice({
       state.arr[0].author = [];
       state.arr[0].minPrice = "0";
       state.arr[0].maxPrice = "0";
+      state.filter = [];
     },
   },
   extraReducers: (builder) => {
