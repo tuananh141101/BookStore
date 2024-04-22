@@ -6,6 +6,7 @@ import { gotoCheckOut } from "../../Store/slice/cart";
 const CartCheckout = () => {
   const dispatch = useDispatch();
   const checkout = useSelector((state) => state.carts.isCheckOut);
+  console.log("cart checkout = ", checkout);
 
   return (
     <>
