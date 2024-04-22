@@ -15,6 +15,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "react-toastify/dist/ReactToastify.css";
 import FrequentlyAskedQuestions from "./pages/Faq/FrequentlyAskedQuestions";
 import Cart from "./pages/Cart/Cart";
+
 function App() {
   return (
     <>

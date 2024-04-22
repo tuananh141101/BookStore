@@ -3,8 +3,12 @@
 .cart {
   background-color: #f6f5f3;
   .container > .row {
-    padding-top: 48px;
-    padding-bottom: 24px;
+    padding-top: 0;
+    padding-bottom: 48px;
+    &:first-child {
+      padding-top: 48px;
+      padding-bottom: 12px;
+    }
   }
   .container > .row > .custom-col {
     .cart-detail {
@@ -20,9 +24,25 @@
 
       div {
         padding: 18px;
+        .image {
+          width: 20%;
+        }
+        .name {
+          width: 40%;
+        }
+        .input-quality {
+          width: 20%;
+        }
+        .price {
+          width: 10%;
+        }
+        .delete {
+          width: 10%;
+        }
+
         .image > img {
-          width: 100px;
-          height: 133.33px;
+          width: 124px;
+          height: 165.33px;
           border-radius: 2px;
         }
 
@@ -148,6 +168,64 @@
           svg {
             padding-right: 4px;
           }
+        }
+      }
+    }
+
+    .checkout-modal {
+      background-color: white;
+      border-radius: 4px;
+
+      p {
+        padding: 18px;
+        color: $Color-1;
+        font-size: $fontSize-Large;
+        font-family: Victormono;
+      }
+
+      .form-checkout {
+        padding: 18px;
+      }
+
+      .form-checkout > form > .btn-submit-bill {
+        outline: none;
+        border: none;
+        border-radius: 2px;
+        background-color: $Color-1;
+      }
+
+      .form-checkout > form > .row > .form-group {
+        p {
+          font-size: $fontSize-Medium;
+          font-family: monospace;
+          cursor: pointer;
+
+          &:nth-child(1) {
+            color: $Color-1;
+            border: 1px solid $border;
+            border-radius: 2px;
+          }
+          &:nth-child(2) {
+            background-color: $backGround-input;
+            border-left: 1px solid $border;
+            border-right: 1px solid $border;
+            display: none;
+          }
+        }
+        p.checked-payment {
+          text-decoration: underline;
+        }
+
+        .payment-2 > p:nth-child(1) {
+          border-radius: 0;
+          border-top: 0;
+          border-bottom: 0;
+        }
+        .payment-1 > p:nth-child(1) {
+          border-bottom: 0;
+        }
+        .payment-3 > p:nth-child(1) {
+          border-top: 0;
         }
       }
     }

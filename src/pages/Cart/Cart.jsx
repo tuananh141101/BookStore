@@ -2,8 +2,19 @@ import { Breadcrumb, Col, Container, Row } from "react-bootstrap";
 import "./Cart.scss";
 import CartDetail from "../../components/Cart/CartDetail";
 import CartCheckout from "../../components/Cart/CartCheckout";
+import { useDispatch, useSelector } from "react-redux";
+import { FaArrowLeftLong } from "react-icons/fa6";
+
+import CheckoutModal from "../../components/Cart/Checkout.Modal";
+import { gotoCheckOut } from "../../Store/slice/cart";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
+  const getIsChecked = useSelector((state) => state.carts.isCheckOut);
+  const dispatch = useDispatch();
+
+  console.log(">>> checked = ", getIsChecked);
+
   return (
     <>
       <div>
@@ -17,11 +28,22 @@ const Cart = () => {
                   </Breadcrumb.Item>
                   <Breadcrumb.Item
                     className="custom-breadcrumb-item d-flex align-items-center"
-                    href="blog"
+                    href="cart"
                     active
                   >
-                    Cart
+                    <Link to="">Cart</Link>
                   </Breadcrumb.Item>
+                  {getIsChecked ? (
+                    <Breadcrumb.Item
+                      className="custom-breadcrumb-item d-flex align-items-center"
+                      href="cart"
+                      active
+                    >
+                      Checkout
+                    </Breadcrumb.Item>
+                  ) : (
+                    ""
+                  )}
                 </Breadcrumb>
               </Col>
             </Row>
@@ -30,9 +52,25 @@ const Cart = () => {
 
         <section className="cart">
           <Container>
+            {getIsChecked ? (
+              <Row>
+                <Col>
+                  <span
+                    style={{ cursor: "pointer" }}
+                    onClick={() => dispatch(gotoCheckOut(false))}
+                  >
+                    <FaArrowLeftLong style={{ paddingRight: "4px" }} />
+                    Back to cart
+                  </span>
+                </Col>
+              </Row>
+            ) : (
+              ""
+            )}
+
             <Row>
               <Col className="custom-col" lg={9}>
-                <CartDetail />
+                {getIsChecked === true ? <CheckoutModal /> : <CartDetail />}
               </Col>
               <Col className="custom-col" lg={3}>
                 <CartCheckout />

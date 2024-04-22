@@ -1,13 +1,15 @@
 import { AnimatePresence, motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { Col, Container, Modal, Row } from "react-bootstrap";
+import { Col, Container, Modal, Row, ToastContainer } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { FaRegEye } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import PreviewItem from "../PreViewItem/PreviewItem";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { addToCart } from "../../Store/slice/cart";
 
 const ProductItemCarousel = () => {
   const [activeElem, setActiveElem] = useState(0);
@@ -26,6 +28,7 @@ const ProductItemCarousel = () => {
     (state) => state.products.listProductsLatest
   );
   const handleClose = () => setShow(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const handleResize = () => {
@@ -63,6 +66,11 @@ const ProductItemCarousel = () => {
     exit: {
       y: 0,
     },
+  };
+
+  const handleAddToCart = (item) => {
+    dispatch(addToCart(item));
+    console.log(">>> check item productitemcarousel = ", item);
   };
 
   return (
@@ -168,6 +176,7 @@ const ProductItemCarousel = () => {
                               >
                                 <FaRegEye />
                               </motion.div>
+
                               <motion.div
                                 className="btn-icon add-fav-book"
                                 variants={btnIconAnimation}
@@ -177,6 +186,7 @@ const ProductItemCarousel = () => {
                                 <FaRegHeart />
                               </motion.div>
                             </div>
+
                             <Card.Body className="border-bottom">
                               <Card.Text>{item.categories}</Card.Text>
                               <Card.Title>{item.name}</Card.Title>
@@ -187,7 +197,7 @@ const ProductItemCarousel = () => {
                             <div className="card-price">
                               <ul className="d-flex align-items-center justify-content-between">
                                 <li>${item.price}</li>
-                                <li>
+                                <li onClick={() => handleAddToCart(item)}>
                                   <motion.div
                                     initial={{
                                       y: 0,
@@ -218,6 +228,7 @@ const ProductItemCarousel = () => {
                     })}
                 </Row>
               </motion.div>
+
               <motion.div
                 className={`carousel-latest carousel-card ${
                   activeElem === 1 ? "active" : ""
@@ -295,27 +306,30 @@ const ProductItemCarousel = () => {
                               <ul className="d-flex align-items-center justify-content-between">
                                 <li>${item.price}</li>
                                 <li>
-                                  <motion.div
-                                    initial={{
-                                      y: 0,
-                                      background: "#F6F5F3",
-                                    }}
-                                    whileHover={{
-                                      y: -5,
-                                      background: "#161619",
-                                    }}
-                                    exit={{
-                                      y: 0,
-                                    }}
-                                    transition={{
-                                      duration: 0.2,
-                                      ease: "easeInOut",
-                                    }}
-                                  >
-                                    <Link>
-                                      <MdOutlineShoppingBag />
-                                    </Link>
-                                  </motion.div>
+                                  <div onClick={() => console.log("t")}>
+                                    <motion.div
+                                      initial={{
+                                        y: 0,
+                                        background: "#F6F5F3",
+                                      }}
+                                      whileHover={{
+                                        y: -5,
+                                        background: "#161619",
+                                      }}
+                                      exit={{
+                                        y: 0,
+                                      }}
+                                      transition={{
+                                        duration: 0.2,
+                                        ease: "easeInOut",
+                                      }}
+                                      style={{ pointerEvents: "none" }}
+                                    >
+                                      <Link>
+                                        <MdOutlineShoppingBag />
+                                      </Link>
+                                    </motion.div>
+                                  </div>
                                 </li>
                               </ul>
                             </div>
@@ -325,6 +339,7 @@ const ProductItemCarousel = () => {
                     })}
                 </Row>
               </motion.div>
+
               <motion.div
                 className={`carousel-sale carousel-card ${
                   activeElem === 2 ? "active" : ""
@@ -437,6 +452,7 @@ const ProductItemCarousel = () => {
             </motion.div>
           </Container>
         </section>
+
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Preview Book</Modal.Title>

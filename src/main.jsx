@@ -7,7 +7,6 @@ import "slick-carousel/slick/slick-theme.css";
 import "./assets/styles/main.scss";
 import { Provider } from "react-redux";
 import { store } from "./Store/store.js";
-
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>

@@ -10,11 +10,13 @@ import { FaInstagram } from "react-icons/fa6";
 import { FaTwitter } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
+import { useDispatch } from "react-redux";
 
 const PreviewItem = ({ idItem, show }) => {
   const [dataItemPreview, setDataItemPreview] = useState([]);
   const [quantityInput, setQuantityInput] = useState(1);
   const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
 
   const getPreviewItem = async () => {
     try {
@@ -36,15 +38,7 @@ const PreviewItem = ({ idItem, show }) => {
   }, []);
 
   const handleAddToCart = (item) => {
-    toast(`✅ ${item.name}product added to cart`, {
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "colored",
-    });
+    console.log(item.name);
   };
 
   const btnIconAnimation = {
@@ -104,7 +98,7 @@ const PreviewItem = ({ idItem, show }) => {
                       </li>
                     </ul>
                     <section className="d-flex align-items-center">
-                      <form action="">
+                      <form>
                         <button
                           onClick={(e) => {
                             e.preventDefault();
@@ -173,19 +167,6 @@ const PreviewItem = ({ idItem, show }) => {
           </Row>
         </div>
       )}
-
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
     </>
   );
 };
