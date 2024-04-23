@@ -93,9 +93,11 @@ export const categoriesSlice = createSlice({
         const price =
           product.price >= state.arr[0].minPrice &&
           product.price <= state.arr[0].maxPrice;
+
+        return categories || author || price;
       });
     },
-    clearFilter(state, action) {
+    clearFilter(state) {
       state.arr[0].categories = [];
       state.arr[0].author = [];
       state.arr[0].minPrice = "0";

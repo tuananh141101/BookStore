@@ -5,7 +5,8 @@ import { motion } from "framer-motion";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { FaRegEye, FaRegHeart } from "react-icons/fa";
 import PreviewItem from "../PreViewItem/PreviewItem";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../Store/slice/cart";
 
 const AuthorCarousel = () => {
   const [show, setShow] = useState(false);
@@ -16,6 +17,7 @@ const AuthorCarousel = () => {
   const danielle = getProducts.filter(
     (item) => item.author === "Danielle Steel"
   );
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const handleResize = () => {
@@ -106,7 +108,7 @@ const AuthorCarousel = () => {
                           <div className="card-price">
                             <ul className="mb-0 d-flex align-items-center justify-content-between">
                               <li>${item.price}</li>
-                              <li>
+                              <li onClick={() => dispatch(addToCart(item))}>
                                 <motion.div
                                   variants={btnIconAnimation}
                                   initial="hidden"

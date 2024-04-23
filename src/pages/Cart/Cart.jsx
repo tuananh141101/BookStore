@@ -6,12 +6,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { FaArrowLeftLong } from "react-icons/fa6";
 
 import CheckoutModal from "../../components/Cart/Checkout.Modal";
-import { gotoCheckOut } from "../../Store/slice/cart";
+import { getCartTotal, gotoCheckOut } from "../../Store/slice/cart";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const Cart = () => {
   const getIsChecked = useSelector((state) => state.carts.isCheckOut);
   const dispatch = useDispatch();
+  const { cart, totalPrice, totalQuantity } = useSelector(
+    (state) => state.carts
+  );
+
+  useEffect(() => {
+    dispatch(getCartTotal());
+  }, [cart]);
 
   console.log(">>> checked = ", getIsChecked);
 

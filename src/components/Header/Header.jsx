@@ -17,6 +17,8 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Collapse from "react-bootstrap/Collapse";
 import { IoIosArrowDown } from "react-icons/io";
+import { useDispatch, useSelector } from "react-redux";
+import { getCartTotal } from "../../Store/slice/cart";
 
 const Header = () => {
   // Phim tat focus inputsearch
@@ -42,6 +44,12 @@ const Header = () => {
   const [categoriesOpen, setCategoriesOpen] = useState(false);
   const [otherOpen, setOtherOpen] = useState(false);
   const [isFocused, setIsFocused] = useState(false); //*Focus->change color icon search
+  // const getQuantityCart = useSelector((state) => state.carts.totalQuantity);
+  const dispatch = useDispatch();
+  const { cart, totalQuantity } = useSelector((state) => state.carts);
+  useEffect(() => {
+    dispatch(getCartTotal());
+  }, [cart]);
 
   //Menu Sticky Scroll
   const [isScrolled, setIsScrolled] = useState(false);
@@ -204,7 +212,7 @@ const Header = () => {
                   </li>
                   <li className="cart-icon">
                     <Link to="cart">
-                      <FiShoppingCart className="icon" />
+                      <FiShoppingCart className="icon" />({totalQuantity})
                     </Link>
                   </li>
                   <li

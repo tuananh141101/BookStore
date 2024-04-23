@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import PreviewItem from "../PreViewItem/PreviewItem";
+import { addToCart } from "../../Store/slice/cart";
 
 const SideMainShop = () => {
   const dispatch = useDispatch();
@@ -92,80 +93,6 @@ const SideMainShop = () => {
           </div>
         </div>
         <div className="product d-flex align-items-center justify-content-between flex-wrap">
-          {/* {filter &&
-            filter.map((item, index) => {
-              return (
-                <>
-                  <Card style={{ width: "19rem" }} className="border">
-                    <div className="img">
-                      <Link>
-                        <Card.Img
-                          variant="top"
-                          src={`https://websitebook-api.vercel.app${item.image}`}
-                        />
-                      </Link>
-
-                      <motion.div
-                        className="btn-icon quick-view"
-                        variants={btnIconAnimation}
-                        initial="hidden"
-                        whileHover="show"
-                        onClick={() => {
-                          setShow(true);
-                          setIdItem(item.id);
-                        }}
-                      >
-                        <FaRegEye />
-                      </motion.div>
-                      <motion.div
-                        className="btn-icon add-fav-book"
-                        variants={btnIconAnimation}
-                        initial="hidden"
-                        whileHover="show"
-                      >
-                        <FaRegHeart />
-                      </motion.div>
-                    </div>
-
-                    <Card.Body className="border-bottom">
-                      <Card.Text>{item.categories.join(", ")}</Card.Text>
-                      <Card.Title>{item.name}</Card.Title>
-                      <p className="mb-0">
-                        <Link>{item.author}</Link>
-                      </p>
-                    </Card.Body>
-                    <div className="card-price">
-                      <ul className="d-flex align-items-center justify-content-between mb-0">
-                        <li>${item.price}</li>
-                        <li>
-                          <motion.div
-                            initial={{
-                              y: 0,
-                              background: "#F6F5F3",
-                            }}
-                            whileHover={{
-                              y: -5,
-                              background: "#161619",
-                            }}
-                            exit={{
-                              y: 0,
-                            }}
-                            transition={{
-                              duration: 0.2,
-                              ease: "easeInOut",
-                            }}
-                          >
-                            <Link>
-                              <MdOutlineShoppingBag />
-                            </Link>
-                          </motion.div>
-                        </li>
-                      </ul>
-                    </div>
-                  </Card>
-                </>
-              );
-            })} */}
           {filter.length > 0
             ? filter.map((item, index) => {
                 return (
@@ -284,7 +211,7 @@ const SideMainShop = () => {
                       <div className="card-price">
                         <ul className="d-flex align-items-center justify-content-between mb-0">
                           <li>${item.price}</li>
-                          <li>
+                          <li onClick={() => dispatch(addToCart(item))}>
                             <motion.div
                               initial={{
                                 y: 0,

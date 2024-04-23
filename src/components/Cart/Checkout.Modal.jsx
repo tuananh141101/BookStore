@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 const CheckoutModal = () => {
   const [validated, setValidated] = useState(false);
@@ -151,6 +152,25 @@ const CheckoutModal = () => {
               <Form.Group as={Col} md="6">
                 <Form.Label>Notes (optional)</Form.Label>
                 <Form.Control as="textarea" rows={3} />
+              </Form.Group>
+              <Form.Group
+                as={Col}
+                className="button"
+                style={{ marginTop: "18px" }}
+              >
+                <Button
+                  type="submit"
+                  style={{
+                    border: "none",
+                    outline: "none",
+                    borderRadius: "2px",
+                    background: "#19110b",
+                  }}
+                >
+                  <Link to="/" style={{ color: "white" }}>
+                    Submit
+                  </Link>
+                </Button>
               </Form.Group>
             </Row>
           </Form>

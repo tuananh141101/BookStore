@@ -11,6 +11,7 @@ import { FaTwitter } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import { useDispatch } from "react-redux";
+import { addToCart } from "../../Store/slice/cart";
 
 const PreviewItem = ({ idItem, show }) => {
   const [dataItemPreview, setDataItemPreview] = useState([]);
@@ -38,7 +39,8 @@ const PreviewItem = ({ idItem, show }) => {
   }, []);
 
   const handleAddToCart = (item) => {
-    console.log(item.name);
+    dispatch(addToCart(item));
+    toast.success(`add item ${item.name} success`);
   };
 
   const btnIconAnimation = {
@@ -167,6 +169,18 @@ const PreviewItem = ({ idItem, show }) => {
           </Row>
         </div>
       )}
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </>
   );
 };

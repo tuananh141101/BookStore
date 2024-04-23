@@ -1,16 +1,20 @@
 import { useState } from "react";
 import { MdOutlineDelete } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  decreaseItemQuantity,
+  increaseItemQuantity,
+  removeItem,
+} from "../../Store/slice/cart";
 
 const CartDetail = () => {
   const dispatch = useDispatch();
   const getCart = useSelector((state) => state.carts.cart);
-  console.log(">>> check get cart = ", getCart);
 
   return (
     <>
       <div className="cart-detail">
-        <p className="mb-0 border-bottom">Cart - 2 Items</p>
+        <p className="mb-0 border-bottom">Cart - {getCart.length} Items</p>
         {getCart?.map((item, index) => {
           return (
             <>
@@ -39,24 +43,13 @@ const CartDetail = () => {
 
                 <div className="input-quality">
                   <button
-                  // onClick={(e) => {
-                  //   e.preventDefault();
-                  //   if (quantityInput > 1) {
-                  //     setQuantityInput(quantityInput - 1);
-                  //   }
-                  // }}
-                  // style={{
-                  //   opacity: quantityInput === 1 ? "0.8" : "1",
-                  // }}
+                    onClick={() => dispatch(decreaseItemQuantity(item.id))}
                   >
                     -
                   </button>
                   <input type="number" value={item.quantity} min="0" />
                   <button
-                  // onClick={(e) => {
-                  //   e.preventDefault();
-                  //   setQuantityInput(quantityInput + 1);
-                  // }}
+                    onClick={() => dispatch(increaseItemQuantity(item.id))}
                   >
                     +
                   </button>
@@ -66,7 +59,10 @@ const CartDetail = () => {
                   <p className="mb-0">{item.price}$</p>
                 </div>
 
-                <div className="delete">
+                <div
+                  className="delete"
+                  onClick={() => dispatch(removeItem(item.id))}
+                >
                   <button>
                     <MdOutlineDelete />
                   </button>
@@ -75,61 +71,9 @@ const CartDetail = () => {
             </>
           );
         })}
-        {/* <div className="border-bottom d-flex align-items-center justify-content-between">
-          <div className="image">
-            <img
-              src="https://websitebook-api.vercel.app/images/img-book-1.png"
-              alt=""
-            />
-          </div>
-
-          <div className="name">
-            <ul>
-              <li>Blessing in Disguise: A Novel</li>
-              <li>
-                <span>Author:</span> Danielle Steel
-              </li>
-              <li>
-                <span>Categories:</span> Fiction, Uncategoried
-              </li>
-            </ul>
-          </div>
-
-          <div className="input-quality">
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                if (quantityInput > 1) {
-                  setQuantityInput(quantityInput - 1);
-                }
-              }}
-              style={{
-                opacity: quantityInput === 1 ? "0.8" : "1",
-              }}
-            >
-              -
-            </button>
-            <input type="number" value={quantityInput} min="0" />
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                setQuantityInput(quantityInput + 1);
-              }}
-            >
-              +
-            </button>
-          </div>
-
-          <div className="price">
-            <p className="mb-0">15$</p>
-          </div>
-
-          <div className="delete">
-            <button>
-              <MdOutlineDelete />
-            </button>
-          </div>
-        </div> */}
+        {getCart?.length === 0 && (
+          <div className="empty-cart-message">No products in your cart.</div>
+        )}
       </div>
     </>
   );

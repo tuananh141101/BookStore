@@ -15,6 +15,8 @@ import Card from "react-bootstrap/Card";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { FaRegEye } from "react-icons/fa";
 import PreviewItem from "../PreViewItem/PreviewItem";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, increaseItemQuantity } from "../../Store/slice/cart";
 
 const DetaiItemProduct = () => {
   const [currentBook, setCurrentBook] = useState([]);
@@ -28,6 +30,8 @@ const DetaiItemProduct = () => {
   const [idItem, setIdItem] = useState();
   const handleClose = () => setShow(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const dispatch = useDispatch();
+  const item = useSelector((state) => state.carts.products);
 
   useEffect(() => {
     const getItem = async () => {
@@ -106,14 +110,7 @@ const DetaiItemProduct = () => {
       progress: undefined,
       theme: "colored",
     });
-  };
-
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
+    dispatch(addToCart(item));
   };
 
   return (
@@ -205,12 +202,12 @@ const DetaiItemProduct = () => {
                         <button
                           onClick={(e) => {
                             e.preventDefault();
-                            setQuantityInput(quantityInput + 1);
+                            dispatch(increaseItemQuantity(item.id));
                           }}
                         >
                           +
                         </button>
-                        <input type="number" value={quantityInput} readOnly />
+                        <input type="number" value={item.quantity} readOnly />
                         <button
                           onClick={(e) => {
                             e.preventDefault();
@@ -316,7 +313,7 @@ const DetaiItemProduct = () => {
               className={`tabs details-tab ${activeElem === 1 ? "active" : ""}`}
             >
               <Row>
-                <Col>Reiews</Col>
+                <Col>0 Reviews</Col>
               </Row>
             </div>
           </Container>
