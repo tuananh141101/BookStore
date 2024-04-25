@@ -3,8 +3,8 @@ import Navbar from "react-bootstrap/Navbar";
 import "./Admin.scss";
 import { Nav, NavDropdown, Tab, Tabs } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Producttable from "./modal/products/product.table";
-import Blogtable from "./modal/blogs/blog.table";
+import Blogtable from "./modal/blogs/BlogTable";
+import Producttable from "./modal/products/productTable";
 
 const Admin = () => {
   return (
