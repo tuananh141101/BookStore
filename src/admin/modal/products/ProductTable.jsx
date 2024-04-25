@@ -7,7 +7,7 @@ import CreateModal from "./CreateModal";
 import { fetchProducts } from "../../../Store/slice/admin";
 import DeleteModal from "./DeleteModal";
 
-const Producttable = () => {
+const ProductTable = () => {
   const dispatch = useDispatch();
   const getProducts = useSelector((state) => state.admins.products);
   const [isOpenEditModal, setIsOpenEditModal] = useState(false);
@@ -125,4 +125,4 @@ const Producttable = () => {
     </>
   );
 };
-export default Producttable;
+export default ProductTable;
