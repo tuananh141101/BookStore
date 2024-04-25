@@ -21,8 +21,6 @@ const Cart = () => {
     dispatch(getCartTotal());
   }, [cart]);
 
-  console.log(">>> checked = ", getIsChecked);
-
   return (
     <>
       <div>
