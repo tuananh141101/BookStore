@@ -7,8 +7,8 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 
 import CheckoutModal from "../../components/Cart/Checkout.Modal";
 import { getCartTotal, gotoCheckOut } from "../../Store/slice/cart";
-import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const getIsChecked = useSelector((state) => state.carts.isCheckOut);
