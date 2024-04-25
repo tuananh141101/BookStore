@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { Button, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 
-import EditModal from "./editModal";
 import CreateModal from "./CreateModal";
 import { fetchProducts } from "../../../Store/slice/admin";
 import DeleteModal from "./DeleteModal";
+import EditModal from "./EditModal";
 
 const ProductTable = () => {
   const dispatch = useDispatch();
@@ -106,11 +106,7 @@ const ProductTable = () => {
         </tbody>
       </Table>
 
-      <EditModal
-        isOpenEditModal={isOpenEditModal}
-        setIsOpenEditModal={setIsOpenEditModal}
-        dataProduct={product}
-      />
+      <EditModal />
 
       <CreateModal
         isOpenCreateModal={isOpenCreateModal}
