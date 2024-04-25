@@ -4,7 +4,7 @@ import "./Admin.scss";
 import { Nav, NavDropdown, Tab, Tabs } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Blogtable from "./modal/blogs/BlogTable";
-import Producttable from "./modal/products/productTable";
+import Producttable from "./modal/products/ProductTable";
 
 const Admin = () => {
   return (

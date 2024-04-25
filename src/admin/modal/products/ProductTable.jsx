@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Modal, Table } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 
 import EditModal from "./editModal";
