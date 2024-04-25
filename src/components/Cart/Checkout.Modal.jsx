@@ -4,9 +4,14 @@ import { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { isCartCheckOutSuccess } from "../../Store/slice/cart";
+import { toast } from "react-toastify";
 
 const CheckoutModal = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [validated, setValidated] = useState(false);
   const [isCheckedPayment, setIsCheckedPayment] = useState(null);
   console.log(">>> check ischeckedpayment = ", isCheckedPayment);
@@ -24,6 +29,12 @@ const CheckoutModal = () => {
 
   const handlePaymentClick = (paymentId) => {
     return setIsCheckedPayment(paymentId);
+  };
+
+  const handleSubmitCart = () => {
+    dispatch(isCartCheckOutSuccess(true));
+    navigate("/");
+    toast.success("Order successfully processed");
   };
 
   return (
@@ -167,9 +178,12 @@ const CheckoutModal = () => {
                     background: "#19110b",
                   }}
                 >
-                  <Link to="/" style={{ color: "white" }}>
+                  <span
+                    style={{ color: "white" }}
+                    onClick={() => handleSubmitCart()}
+                  >
                     Submit
-                  </Link>
+                  </span>
                 </Button>
               </Form.Group>
             </Row>

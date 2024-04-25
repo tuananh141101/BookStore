@@ -16,6 +16,7 @@ const initialState = {
   totalPrice: 0,
   totalQuantity: 0,
   isCheckOut: false,
+  isCheckoutSuccess: false,
 };
 
 export const cartSlice = createSlice({
@@ -24,6 +25,13 @@ export const cartSlice = createSlice({
   reducers: {
     gotoCheckOut: (state, action) => {
       state.isCheckOut = action.payload;
+    },
+
+    isCartCheckOutSuccess: (state, action) => {
+      state.isCheckoutSuccess = action.payload;
+      if (state.isCheckoutSuccess) {
+        state.cart = [];
+      }
     },
 
     addToCart: (state, action) => {
@@ -93,5 +101,6 @@ export const {
   removeItem,
   decreaseItemQuantity,
   increaseItemQuantity,
+  isCartCheckOutSuccess,
 } = cartSlice.actions;
 export default cartSlice.reducer;

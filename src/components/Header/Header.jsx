@@ -19,6 +19,7 @@ import Collapse from "react-bootstrap/Collapse";
 import { IoIosArrowDown } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import { getCartTotal } from "../../Store/slice/cart";
+import { clearUser } from "../../Store/slice/auth";
 
 const Header = () => {
   // Phim tat focus inputsearch
@@ -44,27 +45,14 @@ const Header = () => {
   const [categoriesOpen, setCategoriesOpen] = useState(false);
   const [otherOpen, setOtherOpen] = useState(false);
   const [isFocused, setIsFocused] = useState(false); //*Focus->change color icon search
-  // const getQuantityCart = useSelector((state) => state.carts.totalQuantity);
+
+  const { admin, user } = useSelector((state) => state.auths);
+
   const dispatch = useDispatch();
   const { cart, totalQuantity } = useSelector((state) => state.carts);
   useEffect(() => {
     dispatch(getCartTotal());
   }, [cart]);
-
-  //Menu Sticky Scroll
-  const [isScrolled, setIsScrolled] = useState(false);
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrolled = window.scrollY >= 250;
-      setIsScrolled(scrolled);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [isScrolled]);
 
   // Offcanvas
   const handleClose = () => setShow(false);
@@ -99,7 +87,7 @@ const Header = () => {
 
   return (
     <>
-      <div className={`header ${isScrolled ? "scrolled" : ""}`}>
+      <div className={`header`}>
         <div className={`header-top border-bottom`}>
           <Container className="header-top__container py-2">
             <Row>
@@ -258,7 +246,25 @@ const Header = () => {
                       </Dropdown.Toggle>
 
                       <Dropdown.Menu className="custom-dropdown-menu">
-                        <Dropdown.Item href="#/action-2">Login</Dropdown.Item>
+                        {admin ? (
+                          <>
+                            <Dropdown.Item>
+                              <Link>Hi, Admin BookStore</Link>
+                            </Dropdown.Item>
+                            <Dropdown.Item>
+                              <Link to="dashboard">Admin Page</Link>
+                            </Dropdown.Item>
+                            <Dropdown.Item
+                              onClick={() => dispatch(clearUser())}
+                            >
+                              <Link>Logout</Link>
+                            </Dropdown.Item>
+                          </>
+                        ) : (
+                          <Dropdown.Item>
+                            <Link to="login">Login</Link>
+                          </Dropdown.Item>
+                        )}
                       </Dropdown.Menu>
                     </Dropdown>
                   </li>

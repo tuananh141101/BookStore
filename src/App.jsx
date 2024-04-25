@@ -38,8 +38,8 @@ function App() {
             {/* Page 404 */}
             <Route path="*" element={<Notfound />} />
             {/* Admin */}
-            <Route path="dashboard" element={<Admin />} />
           </Route>
+          <Route path="dashboard" element={<Admin />} />
         </Routes>
       </BrowserRouter>
     </>
