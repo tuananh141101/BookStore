@@ -52,7 +52,7 @@ const Login = () => {
             <Col className="login-modal" md={4}>
               <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Email/Phone or UserName</Form.Label>
+                  <Form.Label>Email/Phone or UserName(admin)</Form.Label>
                   <Form.Control
                     type="email"
                     placeholder="Email/phone or username"
@@ -65,7 +65,7 @@ const Login = () => {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Label>Password</Form.Label>
+                  <Form.Label>Password(12345)</Form.Label>
                   <div className="input-password">
                     <Form.Control
                       className="password"
