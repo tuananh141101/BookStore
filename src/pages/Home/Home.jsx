@@ -6,14 +6,13 @@ import ProductItemCarousel from "../../components/Home/ProductItemCarousel";
 import AuthorCarousel from "../../components/Home/AuthorCarousel";
 import SelectedBook from "../../components/Home/SelectedBook";
 import ProductBlog from "../../components/Home/ProductBlog";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   fetchProducts,
   fetchProductsBestSelling,
   fetchProductsLatest,
   fetchProductsSale,
 } from "../../Store/slice/products";
-import { ToastContainer } from "react-bootstrap";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -24,7 +23,7 @@ const Home = () => {
     dispatch(fetchProductsLatest());
     dispatch(fetchProductsSale());
   }, []);
-
+  ``;
   return (
     <>
       <BannerSlide />

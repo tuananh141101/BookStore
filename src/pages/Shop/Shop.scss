@@ -246,6 +246,10 @@
         .product {
           padding: 8px 0;
           margin-top: 12px;
+
+          @media screen and (max-width: $breakpointMedium) {
+            justify-content: center !important;
+          }
           .card {
             border-radius: 3px;
             border: none;

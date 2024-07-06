@@ -122,7 +122,14 @@ const Author = () => {
                   );
                 })}
               </ul>
-              <Col>hello</Col>
+              <Col
+                className="d-flex align-items-center justify-content-center"
+                style={{
+                  padding: "24px 0",
+                }}
+              >
+                Coming Soon..
+              </Col>
             </Row>
           </Container>
         </section>

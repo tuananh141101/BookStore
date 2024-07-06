@@ -308,7 +308,7 @@ const Header = () => {
               <Link>Home</Link>
             </li>
             <li>
-              <Link to="/categories">
+              <Link to="/shop">
                 <span
                   onClick={() => setCategoriesOpen(!categoriesOpen)}
                   aria-controls="example-collapse-text"
@@ -377,16 +377,16 @@ const Header = () => {
                   <div id="example-collapse-text">
                     <ul style={{ paddingLeft: "12px" }}>
                       <li>
-                        <Link>Contact Us</Link>
+                        <Link to="contact">Contact Us</Link>
                       </li>
                       <li>
-                        <Link>About Us</Link>
+                        <Link to="about">About Us</Link>
                       </li>
                       <li>
-                        <Link>Author</Link>
+                        <Link to="author">Author</Link>
                       </li>
                       <li>
-                        <Link>FAQ</Link>
+                        <Link to="faq">FAQ</Link>
                       </li>
                     </ul>
                   </div>
