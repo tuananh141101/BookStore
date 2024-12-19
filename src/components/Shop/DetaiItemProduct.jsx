@@ -309,6 +309,7 @@ const DetaiItemProduct = () => {
                 </Col>
               </Row>
             </div>
+
             <div
               className={`tabs details-tab ${activeElem === 1 ? "active" : ""}`}
             >

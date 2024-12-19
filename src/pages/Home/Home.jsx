@@ -23,7 +23,7 @@ const Home = () => {
     dispatch(fetchProductsLatest());
     dispatch(fetchProductsSale());
   }, []);
-  ``;
+
   return (
     <>
       <BannerSlide />

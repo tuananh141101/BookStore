@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 const ProductCategories = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+
   return (
     <>
       <section className="product-categories">
@@ -20,7 +21,7 @@ const ProductCategories = () => {
               xs={4}
             >
               <span>
-                <Link to="/categories">
+                <Link to="/shop" onClick={() => window.scroll(0, 0)}>
                   All Categories
                   <IoIosArrowForward className="icon" />
                 </Link>

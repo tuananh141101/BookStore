@@ -16,6 +16,7 @@ const payload = {
   sale: Boolean,
   quantity: "",
 };
+
 export const fetchProducts = createAsyncThunk(
   "products/fetchListProducts",
   async () => {

@@ -8,6 +8,7 @@ import { useRef } from "react";
 const ProductBlog = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+
   return (
     <>
       <section className="product-blog">

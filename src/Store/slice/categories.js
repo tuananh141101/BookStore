@@ -79,6 +79,7 @@ export const categoriesSlice = createSlice({
     updatemaxPrice(state, action) {
       state.arr[0].maxPrice = action.payload;
     },
+
     filterall(state) {
       state.filter = state.products.filter((product) => {
         const categories = product.categories.some((category) =>
@@ -97,6 +98,7 @@ export const categoriesSlice = createSlice({
         return categories || author || price;
       });
     },
+
     clearFilter(state) {
       state.arr[0].categories = [];
       state.arr[0].author = [];
